@@ -8,7 +8,7 @@ An interactive dashboard that identifies the most impactful engineers in the [Po
 
 ## Live Demo
 
-🔗 [your-deployment-url.vercel.app](#) ← replace with your Vercel URL
+🔗 [https://posthog-impact-dashboard-qb2jnek12-pujasridhar2001.vercel.app]
 
 ---
 
@@ -80,7 +80,7 @@ Your GitHub token is **never stored or transmitted anywhere** other than directl
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/posthog-impact-dashboard.git
+git clone https://github.com/PujaSridhar/posthog-impact-dashboard.git
 cd posthog-impact-dashboard
 
 # Install dependencies
