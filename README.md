@@ -8,7 +8,7 @@ An interactive dashboard that identifies the most impactful engineers in the [Po
 
 ## Live Demo
 
-🔗 [https://posthog-impact-dashboard-qb2jnek12-pujasridhar2001.vercel.app](https://meek-horse-446721.netlify.app/)
+🔗 [https://posthog-impact-dashboard.vercel.app]
 
 ---
 
