@@ -1,0 +1,1429 @@
+[0m21:31:56.884307 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff96af8b50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff96b33750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff96b32d90>]}
+
+
+============================== 21:31:56.887659 | 191e6bea-dbc7-499c-a436-cf2f7626a04b ==============================
+[0m21:31:56.887659 [info ] [MainThread]: Running with dbt=1.11.7
+[0m21:31:56.887982 [debug] [MainThread]: running dbt with arguments {'log_format': 'default', 'printer_width': '80', 'log_path': '/opt/airflow/dbt/logs', 'fail_fast': 'False', 'no_print': 'None', 'invocation_command': 'dbt run --profiles-dir /opt/airflow/dbt', 'use_experimental_parser': 'False', 'static_parser': 'True', 'empty': 'False', 'partial_parse': 'True', 'introspect': 'True', 'version_check': 'True', 'warn_error': 'None', 'quiet': 'False', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'target_path': 'None', 'write_json': 'True', 'send_anonymous_usage_stats': 'True', 'profiles_dir': '/opt/airflow/dbt', 'use_colors': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'debug': 'False', 'cache_selected_only': 'False'}
+[0m21:31:56.959643 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '191e6bea-dbc7-499c-a436-cf2f7626a04b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95f16050>]}
+[0m21:31:56.982383 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '191e6bea-dbc7-499c-a436-cf2f7626a04b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff996432d0>]}
+[0m21:31:56.982843 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m21:31:57.014457 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m21:31:57.015051 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m21:31:57.015306 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '191e6bea-dbc7-499c-a436-cf2f7626a04b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95c4eb50>]}
+[0m21:31:57.391340 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '191e6bea-dbc7-499c-a436-cf2f7626a04b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95d2a690>]}
+[0m21:31:57.418297 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m21:31:57.419295 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m21:31:57.428343 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '191e6bea-dbc7-499c-a436-cf2f7626a04b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95ab8750>]}
+[0m21:31:57.428644 [info ] [MainThread]: Found 6 models, 464 macros
+[0m21:31:57.429024 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '191e6bea-dbc7-499c-a436-cf2f7626a04b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95b47810>]}
+[0m21:31:57.429857 [info ] [MainThread]: 
+[0m21:31:57.430170 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m21:31:57.430406 [info ] [MainThread]: 
+[0m21:31:57.430716 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m21:31:57.432588 [debug] [ThreadPool]: Acquiring new postgres connection 'list_github_warehouse'
+[0m21:31:57.432938 [debug] [ThreadPool]: Acquiring new postgres connection 'list_github_warehouse'
+[0m21:31:57.451024 [debug] [ThreadPool]: Using postgres connection "list_github_warehouse"
+[0m21:31:57.451223 [debug] [ThreadPool]: Using postgres connection "list_github_warehouse"
+[0m21:31:57.451427 [debug] [ThreadPool]: On list_github_warehouse: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "connection_name": "list_github_warehouse"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m21:31:57.451690 [debug] [ThreadPool]: On list_github_warehouse: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "connection_name": "list_github_warehouse"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m21:31:57.451905 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:31:57.452097 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:31:57.455720 [debug] [ThreadPool]: SQL status: SELECT 7 in 0.004 seconds
+[0m21:31:57.455874 [debug] [ThreadPool]: SQL status: SELECT 7 in 0.004 seconds
+[0m21:31:57.456545 [debug] [ThreadPool]: On list_github_warehouse: Close
+[0m21:31:57.457226 [debug] [ThreadPool]: On list_github_warehouse: Close
+[0m21:31:57.457838 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_github_warehouse, now create_github_warehouse_marts_staging)
+[0m21:31:57.458126 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_github_warehouse, now create_github_warehouse_marts_marts)
+[0m21:31:57.458404 [debug] [ThreadPool]: Creating schema "database: "github_warehouse"
+schema: "marts_staging"
+"
+[0m21:31:57.458661 [debug] [ThreadPool]: Creating schema "database: "github_warehouse"
+schema: "marts_marts"
+"
+[0m21:31:57.461043 [debug] [ThreadPool]: Using postgres connection "create_github_warehouse_marts_staging"
+[0m21:31:57.462083 [debug] [ThreadPool]: Using postgres connection "create_github_warehouse_marts_marts"
+[0m21:31:57.462304 [debug] [ThreadPool]: On create_github_warehouse_marts_staging: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "connection_name": "create_github_warehouse_marts_staging"} */
+create schema if not exists "marts_staging"
+[0m21:31:57.462500 [debug] [ThreadPool]: On create_github_warehouse_marts_marts: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "connection_name": "create_github_warehouse_marts_marts"} */
+create schema if not exists "marts_marts"
+[0m21:31:57.462693 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m21:31:57.462870 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m21:31:57.466028 [debug] [ThreadPool]: SQL status: CREATE SCHEMA in 0.003 seconds
+[0m21:31:57.466196 [debug] [ThreadPool]: SQL status: CREATE SCHEMA in 0.003 seconds
+[0m21:31:57.466616 [debug] [ThreadPool]: On create_github_warehouse_marts_marts: COMMIT
+[0m21:31:57.467027 [debug] [ThreadPool]: On create_github_warehouse_marts_staging: COMMIT
+[0m21:31:57.467238 [debug] [ThreadPool]: Using postgres connection "create_github_warehouse_marts_marts"
+[0m21:31:57.467417 [debug] [ThreadPool]: Using postgres connection "create_github_warehouse_marts_staging"
+[0m21:31:57.467617 [debug] [ThreadPool]: On create_github_warehouse_marts_marts: COMMIT
+[0m21:31:57.467786 [debug] [ThreadPool]: On create_github_warehouse_marts_staging: COMMIT
+[0m21:31:57.468246 [debug] [ThreadPool]: SQL status: COMMIT in 0.000 seconds
+[0m21:31:57.468408 [debug] [ThreadPool]: SQL status: COMMIT in 0.000 seconds
+[0m21:31:57.468608 [debug] [ThreadPool]: On create_github_warehouse_marts_marts: Close
+[0m21:31:57.468787 [debug] [ThreadPool]: On create_github_warehouse_marts_staging: Close
+[0m21:31:57.469682 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_github_warehouse_marts_staging, now list_github_warehouse_marts_staging)
+[0m21:31:57.469949 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_github_warehouse_marts_marts, now list_github_warehouse_marts_marts)
+[0m21:31:57.472392 [debug] [ThreadPool]: Using postgres connection "list_github_warehouse_marts_staging"
+[0m21:31:57.473301 [debug] [ThreadPool]: Using postgres connection "list_github_warehouse_marts_marts"
+[0m21:31:57.473564 [debug] [ThreadPool]: On list_github_warehouse_marts_staging: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "connection_name": "list_github_warehouse_marts_staging"} */
+select
+      'github_warehouse' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'marts_staging'
+    union all
+    select
+      'github_warehouse' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'marts_staging'
+    union all
+    select
+      'github_warehouse' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'marts_staging'
+  
+[0m21:31:57.473796 [debug] [ThreadPool]: On list_github_warehouse_marts_marts: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "connection_name": "list_github_warehouse_marts_marts"} */
+select
+      'github_warehouse' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'marts_marts'
+    union all
+    select
+      'github_warehouse' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'marts_marts'
+    union all
+    select
+      'github_warehouse' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'marts_marts'
+  
+[0m21:31:57.474024 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m21:31:57.474214 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m21:31:57.477995 [debug] [ThreadPool]: SQL status: SELECT 0 in 0.004 seconds
+[0m21:31:57.478151 [debug] [ThreadPool]: SQL status: SELECT 0 in 0.004 seconds
+[0m21:31:57.478759 [debug] [ThreadPool]: On list_github_warehouse_marts_marts: ROLLBACK
+[0m21:31:57.479275 [debug] [ThreadPool]: On list_github_warehouse_marts_staging: ROLLBACK
+[0m21:31:57.479536 [debug] [ThreadPool]: On list_github_warehouse_marts_marts: Close
+[0m21:31:57.479714 [debug] [ThreadPool]: On list_github_warehouse_marts_staging: Close
+[0m21:31:57.481950 [debug] [MainThread]: Using postgres connection "master"
+[0m21:31:57.482206 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m21:31:57.482442 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m21:31:57.486721 [debug] [MainThread]: SQL status: SELECT 0 in 0.004 seconds
+[0m21:31:57.487207 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '191e6bea-dbc7-499c-a436-cf2f7626a04b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95a8a610>]}
+[0m21:31:57.487457 [debug] [MainThread]: On master: ROLLBACK
+[0m21:31:57.487674 [debug] [MainThread]: On master: COMMIT
+[0m21:31:57.487841 [debug] [MainThread]: Using postgres connection "master"
+[0m21:31:57.488000 [debug] [MainThread]: On master: COMMIT
+[0m21:31:57.488234 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m21:31:57.488391 [debug] [MainThread]: On master: Close
+[0m21:31:57.490752 [debug] [Thread-1 (]: Began running node model.github_impact.stg_commits
+[0m21:31:57.490951 [debug] [Thread-2 (]: Began running node model.github_impact.stg_issues
+[0m21:31:57.491144 [debug] [Thread-3 (]: Began running node model.github_impact.stg_pull_requests
+[0m21:31:57.491311 [debug] [Thread-4 (]: Began running node model.github_impact.stg_reviews
+[0m21:31:57.491535 [info ] [Thread-1 (]: 1 of 6 START sql view model marts_staging.stg_commits .......................... [RUN]
+[0m21:31:57.492016 [info ] [Thread-2 (]: 2 of 6 START sql view model marts_staging.stg_issues ........................... [RUN]
+[0m21:31:57.492335 [info ] [Thread-3 (]: 3 of 6 START sql view model marts_staging.stg_pull_requests .................... [RUN]
+[0m21:31:57.492675 [info ] [Thread-4 (]: 4 of 6 START sql view model marts_staging.stg_reviews .......................... [RUN]
+[0m21:31:57.492952 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_github_warehouse_marts_staging, now model.github_impact.stg_commits)
+[0m21:31:57.493187 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_github_warehouse_marts_marts, now model.github_impact.stg_issues)
+[0m21:31:57.493443 [debug] [Thread-3 (]: Acquiring new postgres connection 'model.github_impact.stg_pull_requests'
+[0m21:31:57.493707 [debug] [Thread-4 (]: Acquiring new postgres connection 'model.github_impact.stg_reviews'
+[0m21:31:57.493926 [debug] [Thread-1 (]: Began compiling node model.github_impact.stg_commits
+[0m21:31:57.494143 [debug] [Thread-2 (]: Began compiling node model.github_impact.stg_issues
+[0m21:31:57.494347 [debug] [Thread-3 (]: Began compiling node model.github_impact.stg_pull_requests
+[0m21:31:57.494556 [debug] [Thread-4 (]: Began compiling node model.github_impact.stg_reviews
+[0m21:31:57.498006 [debug] [Thread-1 (]: Writing injected SQL for node "model.github_impact.stg_commits"
+[0m21:31:57.498779 [debug] [Thread-2 (]: Writing injected SQL for node "model.github_impact.stg_issues"
+[0m21:31:57.499632 [debug] [Thread-3 (]: Writing injected SQL for node "model.github_impact.stg_pull_requests"
+[0m21:31:57.500430 [debug] [Thread-4 (]: Writing injected SQL for node "model.github_impact.stg_reviews"
+[0m21:31:57.502563 [debug] [Thread-3 (]: Began executing node model.github_impact.stg_pull_requests
+[0m21:31:57.509230 [debug] [Thread-4 (]: Began executing node model.github_impact.stg_reviews
+[0m21:31:57.516788 [debug] [Thread-3 (]: Writing runtime sql for node "model.github_impact.stg_pull_requests"
+[0m21:31:57.518338 [debug] [Thread-4 (]: Writing runtime sql for node "model.github_impact.stg_reviews"
+[0m21:31:57.518531 [debug] [Thread-1 (]: Began executing node model.github_impact.stg_commits
+[0m21:31:57.518696 [debug] [Thread-2 (]: Began executing node model.github_impact.stg_issues
+[0m21:31:57.520480 [debug] [Thread-1 (]: Writing runtime sql for node "model.github_impact.stg_commits"
+[0m21:31:57.521945 [debug] [Thread-2 (]: Writing runtime sql for node "model.github_impact.stg_issues"
+[0m21:31:57.522711 [debug] [Thread-3 (]: Using postgres connection "model.github_impact.stg_pull_requests"
+[0m21:31:57.522935 [debug] [Thread-1 (]: Using postgres connection "model.github_impact.stg_commits"
+[0m21:31:57.523270 [debug] [Thread-3 (]: On model.github_impact.stg_pull_requests: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_pull_requests"} */
+
+  create view "github_warehouse"."marts_staging"."stg_pull_requests__dbt_tmp"
+    
+    
+  as (
+    -- models/staging/stg_pull_requests.sql
+-- Cleans and types raw pull requests
+
+WITH source AS (
+    SELECT * FROM raw.pull_requests
+),
+
+cleaned AS (
+    SELECT
+        pr_number,
+        repo,
+        TRIM(title)                         AS title,
+        LOWER(author_login)                 AS engineer_login,
+        author_avatar_url,
+        merged_at::TIMESTAMPTZ              AS merged_at,
+        created_at::TIMESTAMPTZ             AS created_at,
+        closed_at::TIMESTAMPTZ              AS closed_at,
+        DATE(merged_at)                     AS merged_date,
+        COALESCE(review_comments, 0)        AS review_comments,
+        COALESCE(comments, 0)               AS comments,
+        review_comments + comments          AS total_discussion,
+        -- Classify PR size by discussion volume (proxy since we don't have line counts)
+        CASE
+            WHEN review_comments + comments = 0  THEN 'no-discussion'
+            WHEN review_comments + comments <= 3 THEN 'low'
+            WHEN review_comments + comments <= 10 THEN 'medium'
+            ELSE 'high'
+        END                                 AS discussion_level,
+        extracted_at
+    FROM source
+    WHERE author_login IS NOT NULL
+      AND merged_at IS NOT NULL
+)
+
+SELECT * FROM cleaned
+  );
+[0m21:31:57.523561 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.stg_issues"
+[0m21:31:57.523732 [debug] [Thread-4 (]: Using postgres connection "model.github_impact.stg_reviews"
+[0m21:31:57.523922 [debug] [Thread-1 (]: On model.github_impact.stg_commits: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_commits"} */
+
+  create view "github_warehouse"."marts_staging"."stg_commits__dbt_tmp"
+    
+    
+  as (
+    -- models/staging/stg_commits.sql
+-- Cleans and types raw commits
+
+WITH source AS (
+    SELECT * FROM raw.commits
+),
+
+cleaned AS (
+    SELECT
+        sha,
+        LOWER(author_login)             AS engineer_login,
+        author_avatar_url,
+        committed_at::TIMESTAMPTZ       AS committed_at,
+        DATE(committed_at)              AS commit_date,
+        TRIM(message)                   AS message,
+        -- Extract conventional commit type (feat, fix, chore, etc.)
+        CASE
+            WHEN message ILIKE 'feat%'   THEN 'feature'
+            WHEN message ILIKE 'fix%'    THEN 'fix'
+            WHEN message ILIKE 'chore%'  THEN 'chore'
+            WHEN message ILIKE 'refactor%' THEN 'refactor'
+            WHEN message ILIKE 'test%'   THEN 'test'
+            WHEN message ILIKE 'docs%'   THEN 'docs'
+            ELSE 'other'
+        END                             AS commit_type,
+        repo,
+        extracted_at
+    FROM source
+    WHERE author_login IS NOT NULL
+)
+
+SELECT * FROM cleaned
+  );
+[0m21:31:57.524172 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m21:31:57.524407 [debug] [Thread-2 (]: On model.github_impact.stg_issues: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_issues"} */
+
+  create view "github_warehouse"."marts_staging"."stg_issues__dbt_tmp"
+    
+    
+  as (
+    -- models/staging/stg_issues.sql
+-- Cleans and types raw closed issues
+
+WITH source AS (
+    SELECT * FROM raw.issues
+),
+
+cleaned AS (
+    SELECT
+        issue_number,
+        repo,
+        TRIM(title)                         AS title,
+        LOWER(closed_by_login)              AS engineer_login,
+        created_at::TIMESTAMPTZ             AS created_at,
+        closed_at::TIMESTAMPTZ              AS closed_at,
+        DATE(closed_at)                     AS closed_date,
+        -- Time to close in hours
+        EXTRACT(EPOCH FROM (
+            closed_at::TIMESTAMPTZ - created_at::TIMESTAMPTZ
+        )) / 3600.0                         AS hours_to_close,
+        extracted_at
+    FROM source
+    WHERE closed_by_login IS NOT NULL
+      AND closed_at IS NOT NULL
+)
+
+SELECT * FROM cleaned
+  );
+[0m21:31:57.524668 [debug] [Thread-4 (]: On model.github_impact.stg_reviews: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_reviews"} */
+
+  create view "github_warehouse"."marts_staging"."stg_reviews__dbt_tmp"
+    
+    
+  as (
+    -- models/staging/stg_reviews.sql
+-- Cleans and types raw PR reviews
+
+WITH source AS (
+    SELECT * FROM raw.reviews
+),
+
+cleaned AS (
+    SELECT
+        pr_number,
+        repo,
+        LOWER(reviewer_login)               AS engineer_login,
+        state,
+        submitted_at::TIMESTAMPTZ           AS submitted_at,
+        DATE(submitted_at)                  AS review_date,
+        -- Boolean flags for easier aggregation downstream
+        CASE WHEN state = 'APPROVED'            THEN 1 ELSE 0 END   AS is_approval,
+        CASE WHEN state = 'CHANGES_REQUESTED'   THEN 1 ELSE 0 END   AS is_changes_requested,
+        CASE WHEN state = 'COMMENTED'           THEN 1 ELSE 0 END   AS is_comment,
+        extracted_at
+    FROM source
+    WHERE reviewer_login IS NOT NULL
+      AND state IN ('APPROVED', 'CHANGES_REQUESTED', 'COMMENTED')
+)
+
+SELECT * FROM cleaned
+  );
+[0m21:31:57.524882 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m21:31:57.525236 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m21:31:57.525454 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m21:31:57.530374 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.005 seconds
+[0m21:31:57.530622 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.006 seconds
+[0m21:31:57.530786 [debug] [Thread-3 (]: SQL status: CREATE VIEW in 0.007 seconds
+[0m21:31:57.531058 [debug] [Thread-4 (]: SQL status: CREATE VIEW in 0.006 seconds
+[0m21:31:57.533732 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.stg_issues"
+[0m21:31:57.535564 [debug] [Thread-1 (]: Using postgres connection "model.github_impact.stg_commits"
+[0m21:31:57.536815 [debug] [Thread-3 (]: Using postgres connection "model.github_impact.stg_pull_requests"
+[0m21:31:57.537943 [debug] [Thread-4 (]: Using postgres connection "model.github_impact.stg_reviews"
+[0m21:31:57.538166 [debug] [Thread-2 (]: On model.github_impact.stg_issues: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_issues"} */
+alter table "github_warehouse"."marts_staging"."stg_issues__dbt_tmp" rename to "stg_issues"
+[0m21:31:57.538370 [debug] [Thread-1 (]: On model.github_impact.stg_commits: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_commits"} */
+alter table "github_warehouse"."marts_staging"."stg_commits__dbt_tmp" rename to "stg_commits"
+[0m21:31:57.538587 [debug] [Thread-3 (]: On model.github_impact.stg_pull_requests: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_pull_requests"} */
+alter table "github_warehouse"."marts_staging"."stg_pull_requests__dbt_tmp" rename to "stg_pull_requests"
+[0m21:31:57.538806 [debug] [Thread-4 (]: On model.github_impact.stg_reviews: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_reviews"} */
+alter table "github_warehouse"."marts_staging"."stg_reviews__dbt_tmp" rename to "stg_reviews"
+[0m21:31:57.539257 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m21:31:57.539427 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m21:31:57.539580 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m21:31:57.539946 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m21:31:57.545525 [debug] [Thread-2 (]: On model.github_impact.stg_issues: COMMIT
+[0m21:31:57.546166 [debug] [Thread-1 (]: On model.github_impact.stg_commits: COMMIT
+[0m21:31:57.546804 [debug] [Thread-3 (]: On model.github_impact.stg_pull_requests: COMMIT
+[0m21:31:57.547462 [debug] [Thread-4 (]: On model.github_impact.stg_reviews: COMMIT
+[0m21:31:57.547707 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.stg_issues"
+[0m21:31:57.547935 [debug] [Thread-1 (]: Using postgres connection "model.github_impact.stg_commits"
+[0m21:31:57.548173 [debug] [Thread-3 (]: Using postgres connection "model.github_impact.stg_pull_requests"
+[0m21:31:57.548428 [debug] [Thread-4 (]: Using postgres connection "model.github_impact.stg_reviews"
+[0m21:31:57.548665 [debug] [Thread-2 (]: On model.github_impact.stg_issues: COMMIT
+[0m21:31:57.548875 [debug] [Thread-1 (]: On model.github_impact.stg_commits: COMMIT
+[0m21:31:57.549121 [debug] [Thread-3 (]: On model.github_impact.stg_pull_requests: COMMIT
+[0m21:31:57.549363 [debug] [Thread-4 (]: On model.github_impact.stg_reviews: COMMIT
+[0m21:31:57.549869 [debug] [Thread-2 (]: SQL status: COMMIT in 0.000 seconds
+[0m21:31:57.550087 [debug] [Thread-3 (]: SQL status: COMMIT in 0.000 seconds
+[0m21:31:57.550288 [debug] [Thread-1 (]: SQL status: COMMIT in 0.001 seconds
+[0m21:31:57.550481 [debug] [Thread-4 (]: SQL status: COMMIT in 0.000 seconds
+[0m21:31:57.552893 [debug] [Thread-2 (]: Applying DROP to: "github_warehouse"."marts_staging"."stg_issues__dbt_backup"
+[0m21:31:57.553924 [debug] [Thread-3 (]: Applying DROP to: "github_warehouse"."marts_staging"."stg_pull_requests__dbt_backup"
+[0m21:31:57.554949 [debug] [Thread-1 (]: Applying DROP to: "github_warehouse"."marts_staging"."stg_commits__dbt_backup"
+[0m21:31:57.555942 [debug] [Thread-4 (]: Applying DROP to: "github_warehouse"."marts_staging"."stg_reviews__dbt_backup"
+[0m21:31:57.557955 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.stg_issues"
+[0m21:31:57.558364 [debug] [Thread-3 (]: Using postgres connection "model.github_impact.stg_pull_requests"
+[0m21:31:57.558727 [debug] [Thread-1 (]: Using postgres connection "model.github_impact.stg_commits"
+[0m21:31:57.559106 [debug] [Thread-4 (]: Using postgres connection "model.github_impact.stg_reviews"
+[0m21:31:57.559338 [debug] [Thread-2 (]: On model.github_impact.stg_issues: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_issues"} */
+drop view if exists "github_warehouse"."marts_staging"."stg_issues__dbt_backup" cascade
+[0m21:31:57.559558 [debug] [Thread-3 (]: On model.github_impact.stg_pull_requests: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_pull_requests"} */
+drop view if exists "github_warehouse"."marts_staging"."stg_pull_requests__dbt_backup" cascade
+[0m21:31:57.559753 [debug] [Thread-1 (]: On model.github_impact.stg_commits: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_commits"} */
+drop view if exists "github_warehouse"."marts_staging"."stg_commits__dbt_backup" cascade
+[0m21:31:57.559982 [debug] [Thread-4 (]: On model.github_impact.stg_reviews: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_reviews"} */
+drop view if exists "github_warehouse"."marts_staging"."stg_reviews__dbt_backup" cascade
+[0m21:31:57.560332 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.000 seconds
+[0m21:31:57.560504 [debug] [Thread-3 (]: SQL status: DROP VIEW in 0.000 seconds
+[0m21:31:57.560747 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.000 seconds
+[0m21:31:57.560974 [debug] [Thread-4 (]: SQL status: DROP VIEW in 0.000 seconds
+[0m21:31:57.561851 [debug] [Thread-2 (]: On model.github_impact.stg_issues: Close
+[0m21:31:57.562387 [debug] [Thread-3 (]: On model.github_impact.stg_pull_requests: Close
+[0m21:31:57.562869 [debug] [Thread-1 (]: On model.github_impact.stg_commits: Close
+[0m21:31:57.563363 [debug] [Thread-4 (]: On model.github_impact.stg_reviews: Close
+[0m21:31:57.564258 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '191e6bea-dbc7-499c-a436-cf2f7626a04b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95aee6d0>]}
+[0m21:31:57.564542 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '191e6bea-dbc7-499c-a436-cf2f7626a04b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9479d250>]}
+[0m21:31:57.564802 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '191e6bea-dbc7-499c-a436-cf2f7626a04b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff947d9710>]}
+[0m21:31:57.565106 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '191e6bea-dbc7-499c-a436-cf2f7626a04b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9471cb50>]}
+[0m21:31:57.565466 [info ] [Thread-2 (]: 2 of 6 OK created sql view model marts_staging.stg_issues ...................... [[32mCREATE VIEW[0m in 0.07s]
+[0m21:31:57.565943 [info ] [Thread-3 (]: 3 of 6 OK created sql view model marts_staging.stg_pull_requests ............... [[32mCREATE VIEW[0m in 0.07s]
+[0m21:31:57.566290 [info ] [Thread-1 (]: 1 of 6 OK created sql view model marts_staging.stg_commits ..................... [[32mCREATE VIEW[0m in 0.07s]
+[0m21:31:57.566686 [info ] [Thread-4 (]: 4 of 6 OK created sql view model marts_staging.stg_reviews ..................... [[32mCREATE VIEW[0m in 0.07s]
+[0m21:31:57.567062 [debug] [Thread-2 (]: Finished running node model.github_impact.stg_issues
+[0m21:31:57.567327 [debug] [Thread-3 (]: Finished running node model.github_impact.stg_pull_requests
+[0m21:31:57.567578 [debug] [Thread-1 (]: Finished running node model.github_impact.stg_commits
+[0m21:31:57.567853 [debug] [Thread-4 (]: Finished running node model.github_impact.stg_reviews
+[0m21:31:57.568743 [debug] [Thread-2 (]: Began running node model.github_impact.fct_engineer_impact
+[0m21:31:57.568917 [debug] [Thread-3 (]: Began running node model.github_impact.fct_engineer_weekly_trends
+[0m21:31:57.569165 [info ] [Thread-2 (]: 5 of 6 START sql table model marts_marts.fct_engineer_impact ................... [RUN]
+[0m21:31:57.569507 [info ] [Thread-3 (]: 6 of 6 START sql table model marts_marts.fct_engineer_weekly_trends ............ [RUN]
+[0m21:31:57.569800 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.github_impact.stg_issues, now model.github_impact.fct_engineer_impact)
+[0m21:31:57.570031 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.github_impact.stg_pull_requests, now model.github_impact.fct_engineer_weekly_trends)
+[0m21:31:57.570260 [debug] [Thread-2 (]: Began compiling node model.github_impact.fct_engineer_impact
+[0m21:31:57.570470 [debug] [Thread-3 (]: Began compiling node model.github_impact.fct_engineer_weekly_trends
+[0m21:31:57.572365 [debug] [Thread-2 (]: Writing injected SQL for node "model.github_impact.fct_engineer_impact"
+[0m21:31:57.573780 [debug] [Thread-3 (]: Writing injected SQL for node "model.github_impact.fct_engineer_weekly_trends"
+[0m21:31:57.574910 [debug] [Thread-2 (]: Began executing node model.github_impact.fct_engineer_impact
+[0m21:31:57.575082 [debug] [Thread-3 (]: Began executing node model.github_impact.fct_engineer_weekly_trends
+[0m21:31:57.584730 [debug] [Thread-2 (]: Writing runtime sql for node "model.github_impact.fct_engineer_impact"
+[0m21:31:57.586171 [debug] [Thread-3 (]: Writing runtime sql for node "model.github_impact.fct_engineer_weekly_trends"
+[0m21:31:57.587335 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.fct_engineer_impact"
+[0m21:31:57.587689 [debug] [Thread-2 (]: On model.github_impact.fct_engineer_impact: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.fct_engineer_impact"} */
+
+  
+    
+
+  create  table "github_warehouse"."marts_marts"."fct_engineer_impact__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- models/marts/fct_engineer_impact.sql
+-- Final impact score table. This is what the API reads from.
+--
+-- Impact Score Formula:
+--   PRs Merged        × 8   primary shipping signal
+--   Changes Requested × 4   highest review weight: proves real code reading
+--   Reviews Given     × 3   collaboration & knowledge sharing
+--   Issues Closed     × 2   delivery completion
+--   Commits           × 1   activity breadth
+--   Approvals         × 1   participation in review process
+
+WITH commits_agg AS (
+    SELECT
+        engineer_login,
+        repo,
+        COUNT(*)                                    AS total_commits,
+        COUNT(DISTINCT commit_date)                 AS active_days,
+        COUNT(CASE WHEN commit_type = 'feature' THEN 1 END) AS feature_commits,
+        COUNT(CASE WHEN commit_type = 'fix'     THEN 1 END) AS fix_commits,
+        MIN(committed_at)                           AS first_commit_at,
+        MAX(committed_at)                           AS last_commit_at
+    FROM "github_warehouse"."marts_staging"."stg_commits"
+    GROUP BY engineer_login, repo
+),
+
+prs_agg AS (
+    SELECT
+        engineer_login,
+        repo,
+        COUNT(*)                                    AS prs_merged,
+        AVG(total_discussion)                       AS avg_discussion_per_pr,
+        MAX(merged_at)                              AS last_pr_merged_at,
+        -- Collect up to 3 recent PR titles as an array for the API
+        ARRAY_AGG(title ORDER BY merged_at DESC)
+            FILTER (WHERE title IS NOT NULL)        AS recent_pr_titles
+    FROM (
+        SELECT *, ROW_NUMBER() OVER (
+            PARTITION BY engineer_login, repo ORDER BY merged_at DESC
+        ) AS rn
+        FROM "github_warehouse"."marts_staging"."stg_pull_requests"
+    ) ranked
+    GROUP BY engineer_login, repo
+),
+
+reviews_agg AS (
+    SELECT
+        engineer_login,
+        repo,
+        COUNT(*)                                    AS total_reviews,
+        SUM(is_approval)                            AS approvals,
+        SUM(is_changes_requested)                   AS changes_requested,
+        SUM(is_comment)                             AS review_comments
+    FROM "github_warehouse"."marts_staging"."stg_reviews"
+    GROUP BY engineer_login, repo
+),
+
+issues_agg AS (
+    SELECT
+        engineer_login,
+        repo,
+        COUNT(*)                                    AS issues_closed,
+        AVG(hours_to_close)                         AS avg_hours_to_close
+    FROM "github_warehouse"."marts_staging"."stg_issues"
+    GROUP BY engineer_login, repo
+),
+
+-- Combine all dimensions
+combined AS (
+    SELECT
+        COALESCE(c.engineer_login, p.engineer_login, r.engineer_login, i.engineer_login) AS engineer_login,
+        COALESCE(c.repo, p.repo, r.repo, i.repo)                                          AS repo,
+        COALESCE(c.total_commits, 0)        AS commits,
+        COALESCE(c.active_days, 0)          AS active_days,
+        COALESCE(p.prs_merged, 0)           AS prs_merged,
+        COALESCE(p.avg_discussion_per_pr, 0) AS avg_discussion_per_pr,
+        COALESCE(p.recent_pr_titles, ARRAY[]::TEXT[]) AS recent_pr_titles,
+        COALESCE(r.total_reviews, 0)        AS reviews,
+        COALESCE(r.approvals, 0)            AS approvals,
+        COALESCE(r.changes_requested, 0)    AS changes_requested,
+        COALESCE(r.review_comments, 0)      AS review_comments_given,
+        COALESCE(i.issues_closed, 0)        AS issues_closed,
+        COALESCE(i.avg_hours_to_close, 0)   AS avg_hours_to_close_issue
+    FROM commits_agg c
+    FULL OUTER JOIN prs_agg      p ON c.engineer_login = p.engineer_login AND c.repo = p.repo
+    FULL OUTER JOIN reviews_agg  r ON COALESCE(c.engineer_login, p.engineer_login) = r.engineer_login
+                                   AND COALESCE(c.repo, p.repo) = r.repo
+    FULL OUTER JOIN issues_agg   i ON COALESCE(c.engineer_login, p.engineer_login, r.engineer_login) = i.engineer_login
+                                   AND COALESCE(c.repo, p.repo, r.repo) = i.repo
+),
+
+scored AS (
+    SELECT
+        *,
+        -- Core impact score
+        (prs_merged         * 8 +
+         changes_requested  * 4 +
+         reviews            * 3 +
+         issues_closed      * 2 +
+         commits            * 1 +
+         approvals          * 1)::FLOAT      AS impact_score,
+
+        -- Component scores for breakdown transparency
+        prs_merged          * 8              AS score_from_prs,
+        changes_requested   * 4              AS score_from_catching_issues,
+        reviews             * 3              AS score_from_reviews,
+        issues_closed       * 2              AS score_from_issues,
+        commits             * 1              AS score_from_commits,
+        approvals           * 1              AS score_from_approvals,
+
+        -- Rank within repo
+        RANK() OVER (PARTITION BY repo ORDER BY
+            (prs_merged * 8 + changes_requested * 4 + reviews * 3 +
+             issues_closed * 2 + commits + approvals) DESC
+        )                                    AS impact_rank,
+
+        NOW()                                AS computed_at
+    FROM combined
+    -- Filter out noise: must have at least some meaningful activity
+    WHERE commits + prs_merged + reviews > 2
+)
+
+SELECT * FROM scored
+ORDER BY repo, impact_rank
+  );
+  
+[0m21:31:57.587980 [debug] [Thread-3 (]: Using postgres connection "model.github_impact.fct_engineer_weekly_trends"
+[0m21:31:57.588230 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m21:31:57.588500 [debug] [Thread-3 (]: On model.github_impact.fct_engineer_weekly_trends: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.fct_engineer_weekly_trends"} */
+
+  
+    
+
+  create  table "github_warehouse"."marts_marts"."fct_engineer_weekly_trends__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- models/marts/fct_engineer_weekly_trends.sql
+-- Weekly activity breakdown per engineer for trend charts in the frontend.
+
+WITH weekly_commits AS (
+    SELECT
+        engineer_login,
+        repo,
+        DATE_TRUNC('week', committed_at)    AS week_start,
+        COUNT(*)                            AS commits
+    FROM "github_warehouse"."marts_staging"."stg_commits"
+    GROUP BY 1, 2, 3
+),
+
+weekly_prs AS (
+    SELECT
+        engineer_login,
+        repo,
+        DATE_TRUNC('week', merged_at)       AS week_start,
+        COUNT(*)                            AS prs_merged
+    FROM "github_warehouse"."marts_staging"."stg_pull_requests"
+    GROUP BY 1, 2, 3
+),
+
+weekly_reviews AS (
+    SELECT
+        engineer_login,
+        repo,
+        DATE_TRUNC('week', submitted_at)    AS week_start,
+        COUNT(*)                            AS reviews,
+        SUM(is_changes_requested)           AS changes_requested
+    FROM "github_warehouse"."marts_staging"."stg_reviews"
+    GROUP BY 1, 2, 3
+),
+
+combined AS (
+    SELECT
+        COALESCE(c.engineer_login, p.engineer_login, r.engineer_login) AS engineer_login,
+        COALESCE(c.repo, p.repo, r.repo)                               AS repo,
+        COALESCE(c.week_start, p.week_start, r.week_start)             AS week_start,
+        COALESCE(c.commits, 0)              AS commits,
+        COALESCE(p.prs_merged, 0)           AS prs_merged,
+        COALESCE(r.reviews, 0)              AS reviews,
+        COALESCE(r.changes_requested, 0)    AS changes_requested,
+        -- Weekly impact score
+        (COALESCE(p.prs_merged, 0)          * 8 +
+         COALESCE(r.changes_requested, 0)   * 4 +
+         COALESCE(r.reviews, 0)             * 3 +
+         COALESCE(c.commits, 0)             * 1)  AS weekly_impact_score
+    FROM weekly_commits   c
+    FULL OUTER JOIN weekly_prs     p ON c.engineer_login = p.engineer_login AND c.repo = p.repo AND c.week_start = p.week_start
+    FULL OUTER JOIN weekly_reviews r ON COALESCE(c.engineer_login, p.engineer_login) = r.engineer_login
+                                     AND COALESCE(c.repo, p.repo) = r.repo
+                                     AND COALESCE(c.week_start, p.week_start) = r.week_start
+)
+
+SELECT * FROM combined
+ORDER BY engineer_login, week_start
+  );
+  
+[0m21:31:57.589008 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m21:31:57.599927 [debug] [Thread-3 (]: SQL status: SELECT 101 in 0.011 seconds
+[0m21:31:57.600758 [debug] [Thread-2 (]: SQL status: SELECT 75 in 0.013 seconds
+[0m21:31:57.603932 [debug] [Thread-3 (]: Using postgres connection "model.github_impact.fct_engineer_weekly_trends"
+[0m21:31:57.605307 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.fct_engineer_impact"
+[0m21:31:57.605558 [debug] [Thread-3 (]: On model.github_impact.fct_engineer_weekly_trends: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.fct_engineer_weekly_trends"} */
+alter table "github_warehouse"."marts_marts"."fct_engineer_weekly_trends__dbt_tmp" rename to "fct_engineer_weekly_trends"
+[0m21:31:57.605764 [debug] [Thread-2 (]: On model.github_impact.fct_engineer_impact: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.fct_engineer_impact"} */
+alter table "github_warehouse"."marts_marts"."fct_engineer_impact__dbt_tmp" rename to "fct_engineer_impact"
+[0m21:31:57.606150 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m21:31:57.606302 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m21:31:57.606913 [debug] [Thread-3 (]: On model.github_impact.fct_engineer_weekly_trends: COMMIT
+[0m21:31:57.607529 [debug] [Thread-2 (]: On model.github_impact.fct_engineer_impact: COMMIT
+[0m21:31:57.607756 [debug] [Thread-3 (]: Using postgres connection "model.github_impact.fct_engineer_weekly_trends"
+[0m21:31:57.607964 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.fct_engineer_impact"
+[0m21:31:57.608177 [debug] [Thread-3 (]: On model.github_impact.fct_engineer_weekly_trends: COMMIT
+[0m21:31:57.608365 [debug] [Thread-2 (]: On model.github_impact.fct_engineer_impact: COMMIT
+[0m21:31:57.609145 [debug] [Thread-3 (]: SQL status: COMMIT in 0.001 seconds
+[0m21:31:57.609310 [debug] [Thread-2 (]: SQL status: COMMIT in 0.001 seconds
+[0m21:31:57.610285 [debug] [Thread-3 (]: Applying DROP to: "github_warehouse"."marts_marts"."fct_engineer_weekly_trends__dbt_backup"
+[0m21:31:57.611273 [debug] [Thread-2 (]: Applying DROP to: "github_warehouse"."marts_marts"."fct_engineer_impact__dbt_backup"
+[0m21:31:57.612561 [debug] [Thread-3 (]: Using postgres connection "model.github_impact.fct_engineer_weekly_trends"
+[0m21:31:57.612968 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.fct_engineer_impact"
+[0m21:31:57.613211 [debug] [Thread-3 (]: On model.github_impact.fct_engineer_weekly_trends: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.fct_engineer_weekly_trends"} */
+drop table if exists "github_warehouse"."marts_marts"."fct_engineer_weekly_trends__dbt_backup" cascade
+[0m21:31:57.613419 [debug] [Thread-2 (]: On model.github_impact.fct_engineer_impact: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.fct_engineer_impact"} */
+drop table if exists "github_warehouse"."marts_marts"."fct_engineer_impact__dbt_backup" cascade
+[0m21:31:57.613786 [debug] [Thread-3 (]: SQL status: DROP TABLE in 0.000 seconds
+[0m21:31:57.613965 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.000 seconds
+[0m21:31:57.614523 [debug] [Thread-3 (]: On model.github_impact.fct_engineer_weekly_trends: Close
+[0m21:31:57.615046 [debug] [Thread-2 (]: On model.github_impact.fct_engineer_impact: Close
+[0m21:31:57.615394 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '191e6bea-dbc7-499c-a436-cf2f7626a04b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95f40410>]}
+[0m21:31:57.615683 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '191e6bea-dbc7-499c-a436-cf2f7626a04b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95799010>]}
+[0m21:31:57.616052 [info ] [Thread-3 (]: 6 of 6 OK created sql table model marts_marts.fct_engineer_weekly_trends ....... [[32mSELECT 101[0m in 0.05s]
+[0m21:31:57.616565 [info ] [Thread-2 (]: 5 of 6 OK created sql table model marts_marts.fct_engineer_impact .............. [[32mSELECT 75[0m in 0.05s]
+[0m21:31:57.616949 [debug] [Thread-3 (]: Finished running node model.github_impact.fct_engineer_weekly_trends
+[0m21:31:57.617208 [debug] [Thread-2 (]: Finished running node model.github_impact.fct_engineer_impact
+[0m21:31:57.618100 [debug] [MainThread]: On master: COMMIT
+[0m21:31:57.618330 [debug] [MainThread]: Using postgres connection "master"
+[0m21:31:57.618545 [debug] [MainThread]: On master: COMMIT
+[0m21:31:57.618710 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m21:31:57.621361 [debug] [MainThread]: SQL status: COMMIT in 0.003 seconds
+[0m21:31:57.621577 [debug] [MainThread]: On master: Close
+[0m21:31:57.621789 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m21:31:57.622001 [debug] [MainThread]: Connection 'model.github_impact.stg_commits' was properly closed.
+[0m21:31:57.622180 [debug] [MainThread]: Connection 'model.github_impact.fct_engineer_impact' was properly closed.
+[0m21:31:57.622361 [debug] [MainThread]: Connection 'model.github_impact.fct_engineer_weekly_trends' was properly closed.
+[0m21:31:57.622573 [debug] [MainThread]: Connection 'model.github_impact.stg_reviews' was properly closed.
+[0m21:31:57.622814 [info ] [MainThread]: 
+[0m21:31:57.623192 [info ] [MainThread]: Finished running 2 table models, 4 view models in 0 hours 0 minutes and 0.19 seconds (0.19s).
+[0m21:31:57.623786 [debug] [MainThread]: Command end result
+[0m21:31:57.636856 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m21:31:57.637810 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m21:31:57.641094 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/dbt/target/run_results.json
+[0m21:31:57.641292 [info ] [MainThread]: 
+[0m21:31:57.641691 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m21:31:57.641961 [info ] [MainThread]: 
+[0m21:31:57.642208 [info ] [MainThread]: Done. PASS=6 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=6
+[0m21:31:57.642751 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 0.78560144, "process_in_blocks": "1632", "process_kernel_time": 0.116208, "process_mem_max_rss": "129228", "process_out_blocks": "4370", "process_user_time": 1.265272}
+[0m21:31:57.643001 [debug] [MainThread]: Command `dbt run` succeeded at 21:31:57.642961 after 0.79 seconds
+[0m21:31:57.643206 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9b727810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff96af1890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff96af0710>]}
+[0m21:31:57.643417 [debug] [MainThread]: Flushing usage events
+[0m21:31:57.919683 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:33:07.324285 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff84b15890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff84dfca50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff84b527d0>]}
+
+
+============================== 21:33:07.327518 | ed4790d7-55bd-4b48-a4b0-079b307e2866 ==============================
+[0m21:33:07.327518 [info ] [MainThread]: Running with dbt=1.11.7
+[0m21:33:07.328041 [debug] [MainThread]: running dbt with arguments {'log_path': '/opt/airflow/dbt/logs', 'debug': 'False', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'cache_selected_only': 'False', 'empty': 'False', 'static_parser': 'True', 'quiet': 'False', 'write_json': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'introspect': 'True', 'use_colors': 'True', 'printer_width': '80', 'no_print': 'None', 'version_check': 'True', 'indirect_selection': 'eager', 'partial_parse': 'True', 'warn_error': 'None', 'fail_fast': 'False', 'log_cache_events': 'False', 'target_path': 'None', 'invocation_command': 'dbt run --profiles-dir /opt/airflow/dbt', 'log_format': 'default', 'profiles_dir': '/opt/airflow/dbt'}
+[0m21:33:07.393836 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'ed4790d7-55bd-4b48-a4b0-079b307e2866', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff83f7da10>]}
+[0m21:33:07.415720 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'ed4790d7-55bd-4b48-a4b0-079b307e2866', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff876a2190>]}
+[0m21:33:07.416142 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m21:33:07.443299 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m21:33:07.480290 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m21:33:07.480582 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m21:33:07.480789 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m21:33:07.490977 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'ed4790d7-55bd-4b48-a4b0-079b307e2866', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff83b8a810>]}
+[0m21:33:07.517695 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m21:33:07.518556 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m21:33:07.526159 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'ed4790d7-55bd-4b48-a4b0-079b307e2866', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff83d42050>]}
+[0m21:33:07.526432 [info ] [MainThread]: Found 6 models, 464 macros
+[0m21:33:07.526777 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ed4790d7-55bd-4b48-a4b0-079b307e2866', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff83daff90>]}
+[0m21:33:07.527626 [info ] [MainThread]: 
+[0m21:33:07.527869 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m21:33:07.528104 [info ] [MainThread]: 
+[0m21:33:07.528439 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m21:33:07.530158 [debug] [ThreadPool]: Acquiring new postgres connection 'list_github_warehouse'
+[0m21:33:07.530547 [debug] [ThreadPool]: Acquiring new postgres connection 'list_github_warehouse'
+[0m21:33:07.545962 [debug] [ThreadPool]: Using postgres connection "list_github_warehouse"
+[0m21:33:07.546147 [debug] [ThreadPool]: Using postgres connection "list_github_warehouse"
+[0m21:33:07.546383 [debug] [ThreadPool]: On list_github_warehouse: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "connection_name": "list_github_warehouse"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m21:33:07.546612 [debug] [ThreadPool]: On list_github_warehouse: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "connection_name": "list_github_warehouse"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m21:33:07.546811 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:33:07.547015 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:33:07.550639 [debug] [ThreadPool]: SQL status: SELECT 9 in 0.004 seconds
+[0m21:33:07.550799 [debug] [ThreadPool]: SQL status: SELECT 9 in 0.004 seconds
+[0m21:33:07.551353 [debug] [ThreadPool]: On list_github_warehouse: Close
+[0m21:33:07.551918 [debug] [ThreadPool]: On list_github_warehouse: Close
+[0m21:33:07.552960 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_github_warehouse, now list_github_warehouse_marts_staging)
+[0m21:33:07.553207 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_github_warehouse, now list_github_warehouse_marts_marts)
+[0m21:33:07.579867 [debug] [ThreadPool]: Using postgres connection "list_github_warehouse_marts_staging"
+[0m21:33:07.580898 [debug] [ThreadPool]: Using postgres connection "list_github_warehouse_marts_marts"
+[0m21:33:07.581292 [debug] [ThreadPool]: On list_github_warehouse_marts_staging: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "connection_name": "list_github_warehouse_marts_staging"} */
+select
+      'github_warehouse' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'marts_staging'
+    union all
+    select
+      'github_warehouse' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'marts_staging'
+    union all
+    select
+      'github_warehouse' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'marts_staging'
+  
+[0m21:33:07.581881 [debug] [ThreadPool]: On list_github_warehouse_marts_marts: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "connection_name": "list_github_warehouse_marts_marts"} */
+select
+      'github_warehouse' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'marts_marts'
+    union all
+    select
+      'github_warehouse' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'marts_marts'
+    union all
+    select
+      'github_warehouse' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'marts_marts'
+  
+[0m21:33:07.582253 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m21:33:07.582505 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m21:33:07.586618 [debug] [ThreadPool]: SQL status: SELECT 2 in 0.004 seconds
+[0m21:33:07.587003 [debug] [ThreadPool]: SQL status: SELECT 4 in 0.005 seconds
+[0m21:33:07.587776 [debug] [ThreadPool]: On list_github_warehouse_marts_marts: ROLLBACK
+[0m21:33:07.588443 [debug] [ThreadPool]: On list_github_warehouse_marts_staging: ROLLBACK
+[0m21:33:07.588767 [debug] [ThreadPool]: On list_github_warehouse_marts_marts: Close
+[0m21:33:07.589042 [debug] [ThreadPool]: On list_github_warehouse_marts_staging: Close
+[0m21:33:07.592069 [debug] [MainThread]: Using postgres connection "master"
+[0m21:33:07.592388 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m21:33:07.592634 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m21:33:07.596174 [debug] [MainThread]: SQL status: SELECT 4 in 0.004 seconds
+[0m21:33:07.596798 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ed4790d7-55bd-4b48-a4b0-079b307e2866', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff84044710>]}
+[0m21:33:07.597083 [debug] [MainThread]: On master: ROLLBACK
+[0m21:33:07.597326 [debug] [MainThread]: On master: COMMIT
+[0m21:33:07.597525 [debug] [MainThread]: Using postgres connection "master"
+[0m21:33:07.597691 [debug] [MainThread]: On master: COMMIT
+[0m21:33:07.597914 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m21:33:07.598090 [debug] [MainThread]: On master: Close
+[0m21:33:07.599963 [debug] [Thread-1 (]: Began running node model.github_impact.stg_commits
+[0m21:33:07.600179 [debug] [Thread-2 (]: Began running node model.github_impact.stg_issues
+[0m21:33:07.600376 [debug] [Thread-3 (]: Began running node model.github_impact.stg_pull_requests
+[0m21:33:07.600584 [debug] [Thread-4 (]: Began running node model.github_impact.stg_reviews
+[0m21:33:07.600815 [info ] [Thread-1 (]: 1 of 6 START sql view model marts_staging.stg_commits .......................... [RUN]
+[0m21:33:07.601225 [info ] [Thread-2 (]: 2 of 6 START sql view model marts_staging.stg_issues ........................... [RUN]
+[0m21:33:07.601525 [info ] [Thread-3 (]: 3 of 6 START sql view model marts_staging.stg_pull_requests .................... [RUN]
+[0m21:33:07.601810 [info ] [Thread-4 (]: 4 of 6 START sql view model marts_staging.stg_reviews .......................... [RUN]
+[0m21:33:07.602140 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_github_warehouse_marts_staging, now model.github_impact.stg_commits)
+[0m21:33:07.602471 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_github_warehouse_marts_marts, now model.github_impact.stg_issues)
+[0m21:33:07.602744 [debug] [Thread-3 (]: Acquiring new postgres connection 'model.github_impact.stg_pull_requests'
+[0m21:33:07.603015 [debug] [Thread-4 (]: Acquiring new postgres connection 'model.github_impact.stg_reviews'
+[0m21:33:07.603283 [debug] [Thread-1 (]: Began compiling node model.github_impact.stg_commits
+[0m21:33:07.603503 [debug] [Thread-2 (]: Began compiling node model.github_impact.stg_issues
+[0m21:33:07.603712 [debug] [Thread-3 (]: Began compiling node model.github_impact.stg_pull_requests
+[0m21:33:07.603926 [debug] [Thread-4 (]: Began compiling node model.github_impact.stg_reviews
+[0m21:33:07.606579 [debug] [Thread-1 (]: Writing injected SQL for node "model.github_impact.stg_commits"
+[0m21:33:07.607417 [debug] [Thread-2 (]: Writing injected SQL for node "model.github_impact.stg_issues"
+[0m21:33:07.608226 [debug] [Thread-3 (]: Writing injected SQL for node "model.github_impact.stg_pull_requests"
+[0m21:33:07.608997 [debug] [Thread-4 (]: Writing injected SQL for node "model.github_impact.stg_reviews"
+[0m21:33:07.610081 [debug] [Thread-2 (]: Began executing node model.github_impact.stg_issues
+[0m21:33:07.610332 [debug] [Thread-1 (]: Began executing node model.github_impact.stg_commits
+[0m21:33:07.610491 [debug] [Thread-3 (]: Began executing node model.github_impact.stg_pull_requests
+[0m21:33:07.623839 [debug] [Thread-2 (]: Writing runtime sql for node "model.github_impact.stg_issues"
+[0m21:33:07.625960 [debug] [Thread-1 (]: Writing runtime sql for node "model.github_impact.stg_commits"
+[0m21:33:07.627392 [debug] [Thread-3 (]: Writing runtime sql for node "model.github_impact.stg_pull_requests"
+[0m21:33:07.627558 [debug] [Thread-4 (]: Began executing node model.github_impact.stg_reviews
+[0m21:33:07.630015 [debug] [Thread-4 (]: Writing runtime sql for node "model.github_impact.stg_reviews"
+[0m21:33:07.630221 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.stg_issues"
+[0m21:33:07.630435 [debug] [Thread-1 (]: Using postgres connection "model.github_impact.stg_commits"
+[0m21:33:07.630624 [debug] [Thread-3 (]: Using postgres connection "model.github_impact.stg_pull_requests"
+[0m21:33:07.630941 [debug] [Thread-2 (]: On model.github_impact.stg_issues: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_issues"} */
+
+  create view "github_warehouse"."marts_staging"."stg_issues__dbt_tmp"
+    
+    
+  as (
+    -- models/staging/stg_issues.sql
+-- Cleans and types raw closed issues
+
+WITH source AS (
+    SELECT * FROM raw.issues
+),
+
+cleaned AS (
+    SELECT
+        issue_number,
+        repo,
+        TRIM(title)                         AS title,
+        LOWER(closed_by_login)              AS engineer_login,
+        created_at::TIMESTAMPTZ             AS created_at,
+        closed_at::TIMESTAMPTZ              AS closed_at,
+        DATE(closed_at)                     AS closed_date,
+        -- Time to close in hours
+        EXTRACT(EPOCH FROM (
+            closed_at::TIMESTAMPTZ - created_at::TIMESTAMPTZ
+        )) / 3600.0                         AS hours_to_close,
+        extracted_at
+    FROM source
+    WHERE closed_by_login IS NOT NULL
+      AND closed_at IS NOT NULL
+)
+
+SELECT * FROM cleaned
+  );
+[0m21:33:07.631206 [debug] [Thread-1 (]: On model.github_impact.stg_commits: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_commits"} */
+
+  create view "github_warehouse"."marts_staging"."stg_commits__dbt_tmp"
+    
+    
+  as (
+    -- models/staging/stg_commits.sql
+-- Cleans and types raw commits
+
+WITH source AS (
+    SELECT * FROM raw.commits
+),
+
+cleaned AS (
+    SELECT
+        sha,
+        LOWER(author_login)             AS engineer_login,
+        author_avatar_url,
+        committed_at::TIMESTAMPTZ       AS committed_at,
+        DATE(committed_at)              AS commit_date,
+        TRIM(message)                   AS message,
+        -- Extract conventional commit type (feat, fix, chore, etc.)
+        CASE
+            WHEN message ILIKE 'feat%'   THEN 'feature'
+            WHEN message ILIKE 'fix%'    THEN 'fix'
+            WHEN message ILIKE 'chore%'  THEN 'chore'
+            WHEN message ILIKE 'refactor%' THEN 'refactor'
+            WHEN message ILIKE 'test%'   THEN 'test'
+            WHEN message ILIKE 'docs%'   THEN 'docs'
+            ELSE 'other'
+        END                             AS commit_type,
+        repo,
+        extracted_at
+    FROM source
+    WHERE author_login IS NOT NULL
+)
+
+SELECT * FROM cleaned
+  );
+[0m21:33:07.631415 [debug] [Thread-4 (]: Using postgres connection "model.github_impact.stg_reviews"
+[0m21:33:07.631645 [debug] [Thread-3 (]: On model.github_impact.stg_pull_requests: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_pull_requests"} */
+
+  create view "github_warehouse"."marts_staging"."stg_pull_requests__dbt_tmp"
+    
+    
+  as (
+    -- models/staging/stg_pull_requests.sql
+-- Cleans and types raw pull requests
+
+WITH source AS (
+    SELECT * FROM raw.pull_requests
+),
+
+cleaned AS (
+    SELECT
+        pr_number,
+        repo,
+        TRIM(title)                         AS title,
+        LOWER(author_login)                 AS engineer_login,
+        author_avatar_url,
+        merged_at::TIMESTAMPTZ              AS merged_at,
+        created_at::TIMESTAMPTZ             AS created_at,
+        closed_at::TIMESTAMPTZ              AS closed_at,
+        DATE(merged_at)                     AS merged_date,
+        COALESCE(review_comments, 0)        AS review_comments,
+        COALESCE(comments, 0)               AS comments,
+        review_comments + comments          AS total_discussion,
+        -- Classify PR size by discussion volume (proxy since we don't have line counts)
+        CASE
+            WHEN review_comments + comments = 0  THEN 'no-discussion'
+            WHEN review_comments + comments <= 3 THEN 'low'
+            WHEN review_comments + comments <= 10 THEN 'medium'
+            ELSE 'high'
+        END                                 AS discussion_level,
+        extracted_at
+    FROM source
+    WHERE author_login IS NOT NULL
+      AND merged_at IS NOT NULL
+)
+
+SELECT * FROM cleaned
+  );
+[0m21:33:07.631886 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m21:33:07.632124 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m21:33:07.632359 [debug] [Thread-4 (]: On model.github_impact.stg_reviews: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_reviews"} */
+
+  create view "github_warehouse"."marts_staging"."stg_reviews__dbt_tmp"
+    
+    
+  as (
+    -- models/staging/stg_reviews.sql
+-- Cleans and types raw PR reviews
+
+WITH source AS (
+    SELECT * FROM raw.reviews
+),
+
+cleaned AS (
+    SELECT
+        pr_number,
+        repo,
+        LOWER(reviewer_login)               AS engineer_login,
+        state,
+        submitted_at::TIMESTAMPTZ           AS submitted_at,
+        DATE(submitted_at)                  AS review_date,
+        -- Boolean flags for easier aggregation downstream
+        CASE WHEN state = 'APPROVED'            THEN 1 ELSE 0 END   AS is_approval,
+        CASE WHEN state = 'CHANGES_REQUESTED'   THEN 1 ELSE 0 END   AS is_changes_requested,
+        CASE WHEN state = 'COMMENTED'           THEN 1 ELSE 0 END   AS is_comment,
+        extracted_at
+    FROM source
+    WHERE reviewer_login IS NOT NULL
+      AND state IN ('APPROVED', 'CHANGES_REQUESTED', 'COMMENTED')
+)
+
+SELECT * FROM cleaned
+  );
+[0m21:33:07.632577 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m21:33:07.633030 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m21:33:07.636775 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.005 seconds
+[0m21:33:07.636974 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.005 seconds
+[0m21:33:07.637136 [debug] [Thread-3 (]: SQL status: CREATE VIEW in 0.005 seconds
+[0m21:33:07.637323 [debug] [Thread-4 (]: SQL status: CREATE VIEW in 0.004 seconds
+[0m21:33:07.640136 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.stg_issues"
+[0m21:33:07.641385 [debug] [Thread-1 (]: Using postgres connection "model.github_impact.stg_commits"
+[0m21:33:07.642658 [debug] [Thread-3 (]: Using postgres connection "model.github_impact.stg_pull_requests"
+[0m21:33:07.643867 [debug] [Thread-4 (]: Using postgres connection "model.github_impact.stg_reviews"
+[0m21:33:07.644100 [debug] [Thread-2 (]: On model.github_impact.stg_issues: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_issues"} */
+alter table "github_warehouse"."marts_staging"."stg_issues" rename to "stg_issues__dbt_backup"
+[0m21:33:07.644329 [debug] [Thread-1 (]: On model.github_impact.stg_commits: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_commits"} */
+alter table "github_warehouse"."marts_staging"."stg_commits" rename to "stg_commits__dbt_backup"
+[0m21:33:07.644579 [debug] [Thread-3 (]: On model.github_impact.stg_pull_requests: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_pull_requests"} */
+alter table "github_warehouse"."marts_staging"."stg_pull_requests" rename to "stg_pull_requests__dbt_backup"
+[0m21:33:07.644805 [debug] [Thread-4 (]: On model.github_impact.stg_reviews: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_reviews"} */
+alter table "github_warehouse"."marts_staging"."stg_reviews" rename to "stg_reviews__dbt_backup"
+[0m21:33:07.645211 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m21:33:07.645395 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m21:33:07.645590 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m21:33:07.646844 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.stg_issues"
+[0m21:33:07.647002 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m21:33:07.648226 [debug] [Thread-1 (]: Using postgres connection "model.github_impact.stg_commits"
+[0m21:33:07.649403 [debug] [Thread-3 (]: Using postgres connection "model.github_impact.stg_pull_requests"
+[0m21:33:07.649615 [debug] [Thread-2 (]: On model.github_impact.stg_issues: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_issues"} */
+alter table "github_warehouse"."marts_staging"."stg_issues__dbt_tmp" rename to "stg_issues"
+[0m21:33:07.651253 [debug] [Thread-4 (]: Using postgres connection "model.github_impact.stg_reviews"
+[0m21:33:07.651487 [debug] [Thread-1 (]: On model.github_impact.stg_commits: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_commits"} */
+alter table "github_warehouse"."marts_staging"."stg_commits__dbt_tmp" rename to "stg_commits"
+[0m21:33:07.651718 [debug] [Thread-3 (]: On model.github_impact.stg_pull_requests: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_pull_requests"} */
+alter table "github_warehouse"."marts_staging"."stg_pull_requests__dbt_tmp" rename to "stg_pull_requests"
+[0m21:33:07.652014 [debug] [Thread-4 (]: On model.github_impact.stg_reviews: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_reviews"} */
+alter table "github_warehouse"."marts_staging"."stg_reviews__dbt_tmp" rename to "stg_reviews"
+[0m21:33:07.652177 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m21:33:07.652518 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m21:33:07.652677 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m21:33:07.658875 [debug] [Thread-2 (]: On model.github_impact.stg_issues: COMMIT
+[0m21:33:07.659079 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.006 seconds
+[0m21:33:07.659742 [debug] [Thread-1 (]: On model.github_impact.stg_commits: COMMIT
+[0m21:33:07.660492 [debug] [Thread-3 (]: On model.github_impact.stg_pull_requests: COMMIT
+[0m21:33:07.660732 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.stg_issues"
+[0m21:33:07.661370 [debug] [Thread-4 (]: On model.github_impact.stg_reviews: COMMIT
+[0m21:33:07.661590 [debug] [Thread-1 (]: Using postgres connection "model.github_impact.stg_commits"
+[0m21:33:07.661827 [debug] [Thread-3 (]: Using postgres connection "model.github_impact.stg_pull_requests"
+[0m21:33:07.662046 [debug] [Thread-2 (]: On model.github_impact.stg_issues: COMMIT
+[0m21:33:07.662264 [debug] [Thread-4 (]: Using postgres connection "model.github_impact.stg_reviews"
+[0m21:33:07.662480 [debug] [Thread-1 (]: On model.github_impact.stg_commits: COMMIT
+[0m21:33:07.662688 [debug] [Thread-3 (]: On model.github_impact.stg_pull_requests: COMMIT
+[0m21:33:07.662994 [debug] [Thread-4 (]: On model.github_impact.stg_reviews: COMMIT
+[0m21:33:07.663476 [debug] [Thread-2 (]: SQL status: COMMIT in 0.001 seconds
+[0m21:33:07.663722 [debug] [Thread-3 (]: SQL status: COMMIT in 0.000 seconds
+[0m21:33:07.663900 [debug] [Thread-1 (]: SQL status: COMMIT in 0.001 seconds
+[0m21:33:07.664050 [debug] [Thread-4 (]: SQL status: COMMIT in 0.000 seconds
+[0m21:33:07.666361 [debug] [Thread-2 (]: Applying DROP to: "github_warehouse"."marts_staging"."stg_issues__dbt_backup"
+[0m21:33:07.667362 [debug] [Thread-3 (]: Applying DROP to: "github_warehouse"."marts_staging"."stg_pull_requests__dbt_backup"
+[0m21:33:07.668337 [debug] [Thread-1 (]: Applying DROP to: "github_warehouse"."marts_staging"."stg_commits__dbt_backup"
+[0m21:33:07.669339 [debug] [Thread-4 (]: Applying DROP to: "github_warehouse"."marts_staging"."stg_reviews__dbt_backup"
+[0m21:33:07.671330 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.stg_issues"
+[0m21:33:07.671741 [debug] [Thread-3 (]: Using postgres connection "model.github_impact.stg_pull_requests"
+[0m21:33:07.672144 [debug] [Thread-1 (]: Using postgres connection "model.github_impact.stg_commits"
+[0m21:33:07.672517 [debug] [Thread-4 (]: Using postgres connection "model.github_impact.stg_reviews"
+[0m21:33:07.672738 [debug] [Thread-2 (]: On model.github_impact.stg_issues: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_issues"} */
+drop view if exists "github_warehouse"."marts_staging"."stg_issues__dbt_backup" cascade
+[0m21:33:07.672955 [debug] [Thread-3 (]: On model.github_impact.stg_pull_requests: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_pull_requests"} */
+drop view if exists "github_warehouse"."marts_staging"."stg_pull_requests__dbt_backup" cascade
+[0m21:33:07.673167 [debug] [Thread-1 (]: On model.github_impact.stg_commits: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_commits"} */
+drop view if exists "github_warehouse"."marts_staging"."stg_commits__dbt_backup" cascade
+[0m21:33:07.673401 [debug] [Thread-4 (]: On model.github_impact.stg_reviews: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.stg_reviews"} */
+drop view if exists "github_warehouse"."marts_staging"."stg_reviews__dbt_backup" cascade
+[0m21:33:07.674263 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.001 seconds
+[0m21:33:07.674470 [debug] [Thread-3 (]: SQL status: DROP VIEW in 0.001 seconds
+[0m21:33:07.674644 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.001 seconds
+[0m21:33:07.674789 [debug] [Thread-4 (]: SQL status: DROP VIEW in 0.001 seconds
+[0m21:33:07.675720 [debug] [Thread-2 (]: On model.github_impact.stg_issues: Close
+[0m21:33:07.676258 [debug] [Thread-3 (]: On model.github_impact.stg_pull_requests: Close
+[0m21:33:07.676839 [debug] [Thread-1 (]: On model.github_impact.stg_commits: Close
+[0m21:33:07.677383 [debug] [Thread-4 (]: On model.github_impact.stg_reviews: Close
+[0m21:33:07.678176 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ed4790d7-55bd-4b48-a4b0-079b307e2866', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff826b92d0>]}
+[0m21:33:07.678559 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ed4790d7-55bd-4b48-a4b0-079b307e2866', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8250dc90>]}
+[0m21:33:07.678824 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ed4790d7-55bd-4b48-a4b0-079b307e2866', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff84039e50>]}
+[0m21:33:07.679137 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ed4790d7-55bd-4b48-a4b0-079b307e2866', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff840d5f10>]}
+[0m21:33:07.679502 [info ] [Thread-2 (]: 2 of 6 OK created sql view model marts_staging.stg_issues ...................... [[32mCREATE VIEW[0m in 0.08s]
+[0m21:33:07.679966 [info ] [Thread-1 (]: 1 of 6 OK created sql view model marts_staging.stg_commits ..................... [[32mCREATE VIEW[0m in 0.08s]
+[0m21:33:07.680315 [info ] [Thread-3 (]: 3 of 6 OK created sql view model marts_staging.stg_pull_requests ............... [[32mCREATE VIEW[0m in 0.08s]
+[0m21:33:07.680648 [info ] [Thread-4 (]: 4 of 6 OK created sql view model marts_staging.stg_reviews ..................... [[32mCREATE VIEW[0m in 0.08s]
+[0m21:33:07.681004 [debug] [Thread-2 (]: Finished running node model.github_impact.stg_issues
+[0m21:33:07.681310 [debug] [Thread-1 (]: Finished running node model.github_impact.stg_commits
+[0m21:33:07.681598 [debug] [Thread-3 (]: Finished running node model.github_impact.stg_pull_requests
+[0m21:33:07.681861 [debug] [Thread-4 (]: Finished running node model.github_impact.stg_reviews
+[0m21:33:07.682694 [debug] [Thread-2 (]: Began running node model.github_impact.fct_engineer_impact
+[0m21:33:07.682871 [debug] [Thread-1 (]: Began running node model.github_impact.fct_engineer_weekly_trends
+[0m21:33:07.683116 [info ] [Thread-2 (]: 5 of 6 START sql table model marts_marts.fct_engineer_impact ................... [RUN]
+[0m21:33:07.683428 [info ] [Thread-1 (]: 6 of 6 START sql table model marts_marts.fct_engineer_weekly_trends ............ [RUN]
+[0m21:33:07.683679 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.github_impact.stg_issues, now model.github_impact.fct_engineer_impact)
+[0m21:33:07.683912 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.github_impact.stg_commits, now model.github_impact.fct_engineer_weekly_trends)
+[0m21:33:07.684137 [debug] [Thread-2 (]: Began compiling node model.github_impact.fct_engineer_impact
+[0m21:33:07.684362 [debug] [Thread-1 (]: Began compiling node model.github_impact.fct_engineer_weekly_trends
+[0m21:33:07.686072 [debug] [Thread-2 (]: Writing injected SQL for node "model.github_impact.fct_engineer_impact"
+[0m21:33:07.687436 [debug] [Thread-1 (]: Writing injected SQL for node "model.github_impact.fct_engineer_weekly_trends"
+[0m21:33:07.688310 [debug] [Thread-2 (]: Began executing node model.github_impact.fct_engineer_impact
+[0m21:33:07.688489 [debug] [Thread-1 (]: Began executing node model.github_impact.fct_engineer_weekly_trends
+[0m21:33:07.696693 [debug] [Thread-2 (]: Writing runtime sql for node "model.github_impact.fct_engineer_impact"
+[0m21:33:07.698077 [debug] [Thread-1 (]: Writing runtime sql for node "model.github_impact.fct_engineer_weekly_trends"
+[0m21:33:07.698733 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.fct_engineer_impact"
+[0m21:33:07.699056 [debug] [Thread-2 (]: On model.github_impact.fct_engineer_impact: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.fct_engineer_impact"} */
+
+  
+    
+
+  create  table "github_warehouse"."marts_marts"."fct_engineer_impact__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- models/marts/fct_engineer_impact.sql
+-- Final impact score table. This is what the API reads from.
+--
+-- Impact Score Formula:
+--   PRs Merged        × 8   primary shipping signal
+--   Changes Requested × 4   highest review weight: proves real code reading
+--   Reviews Given     × 3   collaboration & knowledge sharing
+--   Issues Closed     × 2   delivery completion
+--   Commits           × 1   activity breadth
+--   Approvals         × 1   participation in review process
+
+WITH commits_agg AS (
+    SELECT
+        engineer_login,
+        repo,
+        COUNT(*)                                    AS total_commits,
+        COUNT(DISTINCT commit_date)                 AS active_days,
+        COUNT(CASE WHEN commit_type = 'feature' THEN 1 END) AS feature_commits,
+        COUNT(CASE WHEN commit_type = 'fix'     THEN 1 END) AS fix_commits,
+        MIN(committed_at)                           AS first_commit_at,
+        MAX(committed_at)                           AS last_commit_at
+    FROM "github_warehouse"."marts_staging"."stg_commits"
+    GROUP BY engineer_login, repo
+),
+
+prs_agg AS (
+    SELECT
+        engineer_login,
+        repo,
+        COUNT(*)                                    AS prs_merged,
+        AVG(total_discussion)                       AS avg_discussion_per_pr,
+        MAX(merged_at)                              AS last_pr_merged_at,
+        -- Collect up to 3 recent PR titles as an array for the API
+        ARRAY_AGG(title ORDER BY merged_at DESC)
+            FILTER (WHERE title IS NOT NULL)        AS recent_pr_titles
+    FROM (
+        SELECT *, ROW_NUMBER() OVER (
+            PARTITION BY engineer_login, repo ORDER BY merged_at DESC
+        ) AS rn
+        FROM "github_warehouse"."marts_staging"."stg_pull_requests"
+    ) ranked
+    GROUP BY engineer_login, repo
+),
+
+reviews_agg AS (
+    SELECT
+        engineer_login,
+        repo,
+        COUNT(*)                                    AS total_reviews,
+        SUM(is_approval)                            AS approvals,
+        SUM(is_changes_requested)                   AS changes_requested,
+        SUM(is_comment)                             AS review_comments
+    FROM "github_warehouse"."marts_staging"."stg_reviews"
+    GROUP BY engineer_login, repo
+),
+
+issues_agg AS (
+    SELECT
+        engineer_login,
+        repo,
+        COUNT(*)                                    AS issues_closed,
+        AVG(hours_to_close)                         AS avg_hours_to_close
+    FROM "github_warehouse"."marts_staging"."stg_issues"
+    GROUP BY engineer_login, repo
+),
+
+-- Combine all dimensions
+combined AS (
+    SELECT
+        COALESCE(c.engineer_login, p.engineer_login, r.engineer_login, i.engineer_login) AS engineer_login,
+        COALESCE(c.repo, p.repo, r.repo, i.repo)                                          AS repo,
+        COALESCE(c.total_commits, 0)        AS commits,
+        COALESCE(c.active_days, 0)          AS active_days,
+        COALESCE(p.prs_merged, 0)           AS prs_merged,
+        COALESCE(p.avg_discussion_per_pr, 0) AS avg_discussion_per_pr,
+        COALESCE(p.recent_pr_titles, ARRAY[]::TEXT[]) AS recent_pr_titles,
+        COALESCE(r.total_reviews, 0)        AS reviews,
+        COALESCE(r.approvals, 0)            AS approvals,
+        COALESCE(r.changes_requested, 0)    AS changes_requested,
+        COALESCE(r.review_comments, 0)      AS review_comments_given,
+        COALESCE(i.issues_closed, 0)        AS issues_closed,
+        COALESCE(i.avg_hours_to_close, 0)   AS avg_hours_to_close_issue
+    FROM commits_agg c
+    FULL OUTER JOIN prs_agg      p ON c.engineer_login = p.engineer_login AND c.repo = p.repo
+    FULL OUTER JOIN reviews_agg  r ON COALESCE(c.engineer_login, p.engineer_login) = r.engineer_login
+                                   AND COALESCE(c.repo, p.repo) = r.repo
+    FULL OUTER JOIN issues_agg   i ON COALESCE(c.engineer_login, p.engineer_login, r.engineer_login) = i.engineer_login
+                                   AND COALESCE(c.repo, p.repo, r.repo) = i.repo
+),
+
+scored AS (
+    SELECT
+        *,
+        -- Core impact score
+        (prs_merged         * 8 +
+         changes_requested  * 4 +
+         reviews            * 3 +
+         issues_closed      * 2 +
+         commits            * 1 +
+         approvals          * 1)::FLOAT      AS impact_score,
+
+        -- Component scores for breakdown transparency
+        prs_merged          * 8              AS score_from_prs,
+        changes_requested   * 4              AS score_from_catching_issues,
+        reviews             * 3              AS score_from_reviews,
+        issues_closed       * 2              AS score_from_issues,
+        commits             * 1              AS score_from_commits,
+        approvals           * 1              AS score_from_approvals,
+
+        -- Rank within repo
+        RANK() OVER (PARTITION BY repo ORDER BY
+            (prs_merged * 8 + changes_requested * 4 + reviews * 3 +
+             issues_closed * 2 + commits + approvals) DESC
+        )                                    AS impact_rank,
+
+        NOW()                                AS computed_at
+    FROM combined
+    -- Filter out noise: must have at least some meaningful activity
+    WHERE commits + prs_merged + reviews > 2
+)
+
+SELECT * FROM scored
+ORDER BY repo, impact_rank
+  );
+  
+[0m21:33:07.699330 [debug] [Thread-1 (]: Using postgres connection "model.github_impact.fct_engineer_weekly_trends"
+[0m21:33:07.699575 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m21:33:07.699851 [debug] [Thread-1 (]: On model.github_impact.fct_engineer_weekly_trends: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.fct_engineer_weekly_trends"} */
+
+  
+    
+
+  create  table "github_warehouse"."marts_marts"."fct_engineer_weekly_trends__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- models/marts/fct_engineer_weekly_trends.sql
+-- Weekly activity breakdown per engineer for trend charts in the frontend.
+
+WITH weekly_commits AS (
+    SELECT
+        engineer_login,
+        repo,
+        DATE_TRUNC('week', committed_at)    AS week_start,
+        COUNT(*)                            AS commits
+    FROM "github_warehouse"."marts_staging"."stg_commits"
+    GROUP BY 1, 2, 3
+),
+
+weekly_prs AS (
+    SELECT
+        engineer_login,
+        repo,
+        DATE_TRUNC('week', merged_at)       AS week_start,
+        COUNT(*)                            AS prs_merged
+    FROM "github_warehouse"."marts_staging"."stg_pull_requests"
+    GROUP BY 1, 2, 3
+),
+
+weekly_reviews AS (
+    SELECT
+        engineer_login,
+        repo,
+        DATE_TRUNC('week', submitted_at)    AS week_start,
+        COUNT(*)                            AS reviews,
+        SUM(is_changes_requested)           AS changes_requested
+    FROM "github_warehouse"."marts_staging"."stg_reviews"
+    GROUP BY 1, 2, 3
+),
+
+combined AS (
+    SELECT
+        COALESCE(c.engineer_login, p.engineer_login, r.engineer_login) AS engineer_login,
+        COALESCE(c.repo, p.repo, r.repo)                               AS repo,
+        COALESCE(c.week_start, p.week_start, r.week_start)             AS week_start,
+        COALESCE(c.commits, 0)              AS commits,
+        COALESCE(p.prs_merged, 0)           AS prs_merged,
+        COALESCE(r.reviews, 0)              AS reviews,
+        COALESCE(r.changes_requested, 0)    AS changes_requested,
+        -- Weekly impact score
+        (COALESCE(p.prs_merged, 0)          * 8 +
+         COALESCE(r.changes_requested, 0)   * 4 +
+         COALESCE(r.reviews, 0)             * 3 +
+         COALESCE(c.commits, 0)             * 1)  AS weekly_impact_score
+    FROM weekly_commits   c
+    FULL OUTER JOIN weekly_prs     p ON c.engineer_login = p.engineer_login AND c.repo = p.repo AND c.week_start = p.week_start
+    FULL OUTER JOIN weekly_reviews r ON COALESCE(c.engineer_login, p.engineer_login) = r.engineer_login
+                                     AND COALESCE(c.repo, p.repo) = r.repo
+                                     AND COALESCE(c.week_start, p.week_start) = r.week_start
+)
+
+SELECT * FROM combined
+ORDER BY engineer_login, week_start
+  );
+  
+[0m21:33:07.700281 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m21:33:07.706484 [debug] [Thread-1 (]: SQL status: SELECT 101 in 0.006 seconds
+[0m21:33:07.710137 [debug] [Thread-1 (]: Using postgres connection "model.github_impact.fct_engineer_weekly_trends"
+[0m21:33:07.710311 [debug] [Thread-2 (]: SQL status: SELECT 75 in 0.011 seconds
+[0m21:33:07.710537 [debug] [Thread-1 (]: On model.github_impact.fct_engineer_weekly_trends: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.fct_engineer_weekly_trends"} */
+alter table "github_warehouse"."marts_marts"."fct_engineer_weekly_trends" rename to "fct_engineer_weekly_trends__dbt_backup"
+[0m21:33:07.711774 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.fct_engineer_impact"
+[0m21:33:07.712090 [debug] [Thread-2 (]: On model.github_impact.fct_engineer_impact: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.fct_engineer_impact"} */
+alter table "github_warehouse"."marts_marts"."fct_engineer_impact" rename to "fct_engineer_impact__dbt_backup"
+[0m21:33:07.712255 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m21:33:07.713525 [debug] [Thread-1 (]: Using postgres connection "model.github_impact.fct_engineer_weekly_trends"
+[0m21:33:07.713693 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m21:33:07.713890 [debug] [Thread-1 (]: On model.github_impact.fct_engineer_weekly_trends: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.fct_engineer_weekly_trends"} */
+alter table "github_warehouse"."marts_marts"."fct_engineer_weekly_trends__dbt_tmp" rename to "fct_engineer_weekly_trends"
+[0m21:33:07.715047 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.fct_engineer_impact"
+[0m21:33:07.715363 [debug] [Thread-2 (]: On model.github_impact.fct_engineer_impact: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.fct_engineer_impact"} */
+alter table "github_warehouse"."marts_marts"."fct_engineer_impact__dbt_tmp" rename to "fct_engineer_impact"
+[0m21:33:07.715527 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m21:33:07.716302 [debug] [Thread-1 (]: On model.github_impact.fct_engineer_weekly_trends: COMMIT
+[0m21:33:07.716480 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m21:33:07.716690 [debug] [Thread-1 (]: Using postgres connection "model.github_impact.fct_engineer_weekly_trends"
+[0m21:33:07.717361 [debug] [Thread-2 (]: On model.github_impact.fct_engineer_impact: COMMIT
+[0m21:33:07.717587 [debug] [Thread-1 (]: On model.github_impact.fct_engineer_weekly_trends: COMMIT
+[0m21:33:07.717798 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.fct_engineer_impact"
+[0m21:33:07.718115 [debug] [Thread-2 (]: On model.github_impact.fct_engineer_impact: COMMIT
+[0m21:33:07.719211 [debug] [Thread-1 (]: SQL status: COMMIT in 0.001 seconds
+[0m21:33:07.720252 [debug] [Thread-2 (]: SQL status: COMMIT in 0.001 seconds
+[0m21:33:07.724663 [debug] [Thread-1 (]: Applying DROP to: "github_warehouse"."marts_marts"."fct_engineer_weekly_trends__dbt_backup"
+[0m21:33:07.727868 [debug] [Thread-2 (]: Applying DROP to: "github_warehouse"."marts_marts"."fct_engineer_impact__dbt_backup"
+[0m21:33:07.732463 [debug] [Thread-1 (]: Using postgres connection "model.github_impact.fct_engineer_weekly_trends"
+[0m21:33:07.734137 [debug] [Thread-2 (]: Using postgres connection "model.github_impact.fct_engineer_impact"
+[0m21:33:07.735053 [debug] [Thread-1 (]: On model.github_impact.fct_engineer_weekly_trends: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.fct_engineer_weekly_trends"} */
+drop table if exists "github_warehouse"."marts_marts"."fct_engineer_weekly_trends__dbt_backup" cascade
+[0m21:33:07.735486 [debug] [Thread-2 (]: On model.github_impact.fct_engineer_impact: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "github_impact", "target_name": "dev", "node_id": "model.github_impact.fct_engineer_impact"} */
+drop table if exists "github_warehouse"."marts_marts"."fct_engineer_impact__dbt_backup" cascade
+[0m21:33:07.737570 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.001 seconds
+[0m21:33:07.737782 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0.002 seconds
+[0m21:33:07.738535 [debug] [Thread-2 (]: On model.github_impact.fct_engineer_impact: Close
+[0m21:33:07.739130 [debug] [Thread-1 (]: On model.github_impact.fct_engineer_weekly_trends: Close
+[0m21:33:07.739550 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ed4790d7-55bd-4b48-a4b0-079b307e2866', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff83ace790>]}
+[0m21:33:07.739888 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ed4790d7-55bd-4b48-a4b0-079b307e2866', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8263d2d0>]}
+[0m21:33:07.740369 [info ] [Thread-2 (]: 5 of 6 OK created sql table model marts_marts.fct_engineer_impact .............. [[32mSELECT 75[0m in 0.06s]
+[0m21:33:07.740912 [info ] [Thread-1 (]: 6 of 6 OK created sql table model marts_marts.fct_engineer_weekly_trends ....... [[32mSELECT 101[0m in 0.06s]
+[0m21:33:07.741236 [debug] [Thread-2 (]: Finished running node model.github_impact.fct_engineer_impact
+[0m21:33:07.741531 [debug] [Thread-1 (]: Finished running node model.github_impact.fct_engineer_weekly_trends
+[0m21:33:07.742381 [debug] [MainThread]: On master: COMMIT
+[0m21:33:07.742573 [debug] [MainThread]: Using postgres connection "master"
+[0m21:33:07.742753 [debug] [MainThread]: On master: COMMIT
+[0m21:33:07.742916 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m21:33:07.745208 [debug] [MainThread]: SQL status: COMMIT in 0.002 seconds
+[0m21:33:07.745387 [debug] [MainThread]: On master: Close
+[0m21:33:07.745607 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m21:33:07.745765 [debug] [MainThread]: Connection 'model.github_impact.fct_engineer_impact' was properly closed.
+[0m21:33:07.745908 [debug] [MainThread]: Connection 'model.github_impact.fct_engineer_weekly_trends' was properly closed.
+[0m21:33:07.746043 [debug] [MainThread]: Connection 'model.github_impact.stg_pull_requests' was properly closed.
+[0m21:33:07.746195 [debug] [MainThread]: Connection 'model.github_impact.stg_reviews' was properly closed.
+[0m21:33:07.746409 [info ] [MainThread]: 
+[0m21:33:07.746716 [info ] [MainThread]: Finished running 2 table models, 4 view models in 0 hours 0 minutes and 0.22 seconds (0.22s).
+[0m21:33:07.747264 [debug] [MainThread]: Command end result
+[0m21:33:07.760978 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m21:33:07.761930 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m21:33:07.765528 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/dbt/target/run_results.json
+[0m21:33:07.765711 [info ] [MainThread]: 
+[0m21:33:07.766005 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m21:33:07.766188 [info ] [MainThread]: 
+[0m21:33:07.766376 [info ] [MainThread]: Done. PASS=6 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=6
+[0m21:33:07.766879 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 0.4647262, "process_in_blocks": "0", "process_kernel_time": 0.096928, "process_mem_max_rss": "124796", "process_out_blocks": "2053", "process_user_time": 0.90433}
+[0m21:33:07.767165 [debug] [MainThread]: Command `dbt run` succeeded at 21:33:07.767126 after 0.47 seconds
+[0m21:33:07.767377 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff89727850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff897386d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff89738b50>]}
+[0m21:33:07.767587 [debug] [MainThread]: Flushing usage events
+[0m21:33:07.870402 [debug] [MainThread]: An error was encountered while trying to flush usage events
