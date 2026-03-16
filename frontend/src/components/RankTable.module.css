@@ -1,0 +1,99 @@
+.table { display: flex; flex-direction: column; gap: 2px; }
+
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3px 52px 220px 1fr 220px 80px 64px;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px 16px 0;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+  animation: slideIn 0.35s both;
+}
+@keyframes slideIn { from { opacity:0; transform:translateX(-12px); } to { opacity:1; transform:translateX(0); } }
+.row:hover { border-color: color-mix(in srgb, var(--rc) 40%, transparent); background: var(--bg3); transform: translateX(3px); }
+.rowOpen { border-color: var(--rc) !important; border-radius: 4px 4px 0 0; background: var(--bg3); }
+
+.accentBar { width: 3px; align-self: stretch; background: var(--rc); opacity: 0.7; border-radius: 0; margin-left: 0; }
+
+.rankCol { display: flex; align-items: center; justify-content: center; }
+.medal { font-size: 22px; line-height: 1; }
+.rankNum { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.05em; }
+
+.identity { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.avatar { width: 38px; height: 38px; border-radius: 50%; border: 2px solid; flex-shrink: 0; object-fit: cover; }
+.login { font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 500; color: var(--text); }
+.badge {
+  display: inline-flex; align-items: center; gap: 5px; margin-top: 4px;
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 2px 8px; border-radius: 2px; width: fit-content;
+  font-weight: 500;
+}
+
+.dnaCol { display: flex; flex-direction: column; gap: 4px; }
+.dna { display: flex; height: 7px; border-radius: 4px; overflow: hidden; gap: 1px; }
+.dnaSeg { height: 100%; border-radius: 2px; cursor: help; transition: opacity 0.15s; }
+.dnaSeg:hover { opacity: 0.6; }
+.dnaLabel { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.08em; }
+
+.metricsCol { display: flex; flex-direction: column; gap: 4px; align-items: flex-end; font-family: 'DM Mono', monospace; font-size: 12px; }
+
+.scoreCol { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.05em; text-align: center; line-height: 1; display: flex; flex-direction: column; align-items: center; }
+.scorePts { font-family: 'DM Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-top: 2px; }
+
+.actionsCol { display: flex; align-items: center; justify-content: flex-end; gap: 6px; }
+.ghBtn { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 4px; border: 1px solid var(--border2); color: var(--muted); text-decoration: none; transition: color 0.15s, border-color 0.15s, background 0.15s; }
+.ghBtn:hover { color: var(--cyan); border-color: var(--cyan); background: var(--cyan-g); }
+.chevron { background: none; border: 1px solid var(--border2); color: var(--muted); width: 28px; height: 28px; border-radius: 4px; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; transition: transform 0.2s, color 0.15s, border-color 0.15s; }
+.chevron:hover { color: var(--text); }
+.chevronOpen { transform: rotate(180deg); color: var(--rc) !important; border-color: var(--rc) !important; }
+
+/* ── Expanded panel ── */
+.panel {
+  background: var(--bg2);
+  border: 1px solid var(--rc);
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  padding: 22px 24px;
+  animation: drop 0.22s ease;
+}
+@keyframes drop { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:translateY(0); } }
+
+.panelGrid { display: grid; grid-template-columns: 300px 1fr; gap: 32px; }
+
+.panelHeading { font-family: 'DM Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--muted); margin-bottom: 12px; }
+
+.bRow { display: grid; grid-template-columns: 7px 1fr 80px 30px; align-items: center; gap: 8px; margin-bottom: 9px; }
+.bDot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.bLabel { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
+.bTrack { height: 4px; background: var(--bg); border-radius: 2px; overflow: hidden; }
+.bVal { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text); font-weight: 500; text-align: right; }
+
+.statPills { display: flex; flex-wrap: wrap; gap: 5px; margin: 12px 0; }
+.statPill { font-family: 'DM Mono', monospace; font-size: 10px; padding: 3px 8px; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--muted); }
+
+.badgeExplain { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border: 1px solid; border-radius: 3px; margin: 12px 0; background: rgba(0,0,0,0.2); }
+.badgeExplainIcon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.badgeExplainTitle { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
+.badgeExplainDesc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+.fullLink { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--cyan); text-decoration: none; padding: 6px 12px; border: 1px solid rgba(0,200,240,0.25); border-radius: 3px; margin-top: 4px; transition: background 0.15s; }
+.fullLink:hover { background: var(--cyan-g); }
+
+.prRow { display: flex; gap: 8px; margin-bottom: 8px; align-items: flex-start; }
+.prBullet { font-size: 10px; flex-shrink: 0; margin-top: 3px; }
+.prTitle { font-size: 13px; color: var(--text); line-height: 1.5; }
+
+.chartLoading { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); padding: 16px 0; }
+
+@media (max-width: 960px) {
+  .row { grid-template-columns: 3px 40px 180px 1fr 60px 50px; gap: 10px; }
+  .metricsCol { display: none; }
+  .panelGrid { grid-template-columns: 1fr; }
+}

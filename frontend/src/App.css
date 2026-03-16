@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700;900&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #020509; --bg2: #070d16; --bg3: #0c1524;
+  --border: #101e32; --border2: #1a3050;
+  --gold: #f0b429; --gold-g: rgba(240,180,41,0.2);
+  --silver: #8fa8c0; --silver-g: rgba(143,168,192,0.15);
+  --bronze: #c47c2b; --bronze-g: rgba(196,124,43,0.15);
+  --cyan: #00c8f0; --cyan-g: rgba(0,200,240,0.1);
+  --purple: #9b72f6; --green: #00e878; --red: #ff3b5c;
+  --orange: #ff8a00; --text: #dde6f0; --muted: #3d5878; --muted2: #243650;
+}
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  min-height: 100vh; overflow-x: hidden;
+  font-size: 15px; line-height: 1.5;
+}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }

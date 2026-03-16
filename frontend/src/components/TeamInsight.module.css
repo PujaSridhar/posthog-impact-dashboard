@@ -1,0 +1,51 @@
+.wrap {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-left: 3px solid var(--gold);
+  border-radius: 4px;
+  padding: 20px 24px;
+  margin-bottom: 48px;
+}
+.title {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.icon { font-size: 8px; }
+.insight {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 16px;
+  max-width: 700px;
+}
+.callouts {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.callout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.calloutIcon { font-size: 16px; }
+.calloutLabel {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.calloutVal {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--text);
+  margin-top: 2px;
+}
