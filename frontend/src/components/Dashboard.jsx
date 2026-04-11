@@ -7,7 +7,7 @@ import BadgeLegend from './BadgeLegend'
 import TeamInsight from './TeamInsight'
 import styles from './Dashboard.module.css'
 
-const API = 'http://localhost:8000'
+const API = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 const DAY_OPTIONS = [7, 15, 30, 60, 90]
 
 export default function Dashboard() {
