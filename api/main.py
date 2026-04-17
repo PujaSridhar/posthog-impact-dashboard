@@ -24,6 +24,11 @@ def since_date(days: int) -> str:
     return (datetime.now(timezone.utc) - timedelta(days=days)).isoformat()
 
 
+@app.get("/")
+def root():
+    return {"status": "ok", "service": "PostHog Impact Dashboard API", "version": "2.0.0"}
+
+
 @app.get("/health")
 def health():
     return {"status": "ok"}
