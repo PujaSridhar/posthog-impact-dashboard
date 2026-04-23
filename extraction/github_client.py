@@ -159,12 +159,17 @@ class GitHubClient:
                 reviewer = r.get("user")
                 if self.is_bot(reviewer):
                     continue
+                reviewer_login = reviewer["login"] if reviewer else None
+                submitted_at = r.get("submitted_at")
+                state = r.get("state")
+                if not reviewer_login or not submitted_at or not state:
+                    continue
                 all_reviews.append({
                     "pr_number": pr_number,
-                    "reviewer_login": reviewer["login"] if reviewer else None,
+                    "reviewer_login": reviewer_login,
                     "reviewer_type": reviewer.get("type") if reviewer else None,
-                    "state": r.get("state"),  # APPROVED, CHANGES_REQUESTED, COMMENTED
-                    "submitted_at": r.get("submitted_at"),
+                    "state": state,  # APPROVED, CHANGES_REQUESTED, COMMENTED
+                    "submitted_at": submitted_at,
                 })
 
         logger.info(f"  → {len(all_reviews)} reviews fetched")

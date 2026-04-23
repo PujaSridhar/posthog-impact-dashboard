@@ -4,7 +4,7 @@ import axios from 'axios'
 import TrendChart from './TrendChart'
 import styles from './RankTable.module.css'
 
-const API = 'http://localhost:8000'
+const API = import.meta.env.VITE_API_BASE_URL || ''
 
 // ── Badge definitions — shown in the legend ─────────────────────────────────
 export const BADGES = {

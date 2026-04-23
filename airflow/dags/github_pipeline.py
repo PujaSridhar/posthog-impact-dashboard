@@ -118,6 +118,7 @@ def log_run(**context):
     from db_loader import get_connection, log_pipeline_run
 
     ti = context["ti"]
+    dag_run = context["dag_run"]
     counts = {
         "commits":  ti.xcom_pull(task_ids="extract_commits",       key="commits_count")  or 0,
         "prs":      ti.xcom_pull(task_ids="extract_pull_requests",  key="prs_count")      or 0,
@@ -125,11 +126,33 @@ def log_run(**context):
         "issues":   ti.xcom_pull(task_ids="extract_issues",         key="issues_count")   or 0,
     }
 
+    tracked_task_ids = {
+        "extract_commits",
+        "extract_pull_requests",
+        "extract_reviews",
+        "extract_issues",
+        "run_dbt_transformations",
+    }
+    task_states = {
+        task_instance.task_id: task_instance.state or "unknown"
+        for task_instance in dag_run.get_task_instances()
+        if task_instance.task_id in tracked_task_ids
+    }
+
+    unsuccessful = {
+        task_id: state for task_id, state in task_states.items() if state != "success"
+    }
+    status = "success" if not unsuccessful else "failed"
+    error = None
+    if unsuccessful:
+        details = ", ".join(f"{task_id}={state}" for task_id, state in sorted(unsuccessful.items()))
+        error = f"Unsuccessful tasks: {details}"
+
     conn = get_connection(WAREHOUSE_URL)
-    log_pipeline_run(conn, REPO, "success", counts)
+    log_pipeline_run(conn, REPO, status, counts, error=error)
     conn.close()
 
-    print(f"Pipeline complete: {counts}")
+    print(f"Pipeline complete: status={status}, counts={counts}, task_states={task_states}")
 
 
 # ── DAG definition ────────────────────────────────────────────────────────────

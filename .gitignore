@@ -1,4 +1,5 @@
 .env
+.env.bak
 airflow/logs/
 dbt/target/
 dbt/dbt_packages/

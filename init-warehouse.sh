@@ -1,30 +1,40 @@
--- Create the data warehouse database and user
-CREATE USER warehouse WITH PASSWORD 'warehouse';
-CREATE DATABASE github_warehouse OWNER warehouse;
-GRANT ALL PRIVILEGES ON DATABASE github_warehouse TO warehouse;
+#!/bin/bash
+set -euo pipefail
 
--- Connect to the warehouse database to create schemas
-\c github_warehouse;
+warehouse_user="${WAREHOUSE_DB_USER:-warehouse}"
+warehouse_password="${WAREHOUSE_DB_PASSWORD:-warehouse}"
+warehouse_db="${WAREHOUSE_DB_NAME:-github_warehouse}"
 
--- Bronze layer: raw data exactly as it comes from GitHub API
-CREATE SCHEMA IF NOT EXISTS raw AUTHORIZATION warehouse;
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<EOSQL
+DO \$\$
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1 FROM pg_catalog.pg_roles WHERE rolname = '${warehouse_user}'
+    ) THEN
+        CREATE ROLE "${warehouse_user}" LOGIN PASSWORD '${warehouse_password}';
+    ELSE
+        ALTER ROLE "${warehouse_user}" WITH LOGIN PASSWORD '${warehouse_password}';
+    END IF;
+END
+\$\$;
 
--- Silver layer: cleaned and typed staging models (managed by dbt)
-CREATE SCHEMA IF NOT EXISTS staging AUTHORIZATION warehouse;
+SELECT 'CREATE DATABASE "${warehouse_db}" OWNER "${warehouse_user}"'
+WHERE NOT EXISTS (SELECT 1 FROM pg_database WHERE datname = '${warehouse_db}')
+\gexec
 
--- Gold layer: aggregated mart models ready for the API (managed by dbt)
-CREATE SCHEMA IF NOT EXISTS marts AUTHORIZATION warehouse;
+GRANT ALL PRIVILEGES ON DATABASE "${warehouse_db}" TO "${warehouse_user}";
+\connect "${warehouse_db}"
 
--- Grant schema permissions
-GRANT ALL ON SCHEMA raw TO warehouse;
-GRANT ALL ON SCHEMA staging TO warehouse;
-GRANT ALL ON SCHEMA marts TO warehouse;
+CREATE SCHEMA IF NOT EXISTS raw AUTHORIZATION "${warehouse_user}";
+CREATE SCHEMA IF NOT EXISTS staging AUTHORIZATION "${warehouse_user}";
+CREATE SCHEMA IF NOT EXISTS marts AUTHORIZATION "${warehouse_user}";
 
--- ── Bronze / Raw Tables ──────────────────────────────────────────────────────
+GRANT ALL ON SCHEMA raw TO "${warehouse_user}";
+GRANT ALL ON SCHEMA staging TO "${warehouse_user}";
+GRANT ALL ON SCHEMA marts TO "${warehouse_user}";
 
-\c github_warehouse warehouse;
+\connect "${warehouse_db}" "${warehouse_user}"
 
--- Raw commits
 CREATE TABLE IF NOT EXISTS raw.commits (
     id                  SERIAL PRIMARY KEY,
     sha                 VARCHAR(40) UNIQUE NOT NULL,
@@ -37,7 +47,6 @@ CREATE TABLE IF NOT EXISTS raw.commits (
     extracted_at        TIMESTAMPTZ DEFAULT NOW()
 );
 
--- Raw pull requests
 CREATE TABLE IF NOT EXISTS raw.pull_requests (
     id                  SERIAL PRIMARY KEY,
     pr_number           INTEGER NOT NULL,
@@ -56,19 +65,31 @@ CREATE TABLE IF NOT EXISTS raw.pull_requests (
     UNIQUE(pr_number, repo)
 );
 
--- Raw reviews
 CREATE TABLE IF NOT EXISTS raw.reviews (
     id                  SERIAL PRIMARY KEY,
     pr_number           INTEGER NOT NULL,
     repo                VARCHAR(255) NOT NULL,
-    reviewer_login      VARCHAR(255),
+    reviewer_login      VARCHAR(255) NOT NULL,
     reviewer_type       VARCHAR(50),
-    state               VARCHAR(50),  -- APPROVED, CHANGES_REQUESTED, COMMENTED
-    submitted_at        TIMESTAMPTZ,
+    state               VARCHAR(50) NOT NULL,
+    submitted_at        TIMESTAMPTZ NOT NULL,
     extracted_at        TIMESTAMPTZ DEFAULT NOW()
 );
 
--- Raw issues
+DO \$\$
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1
+        FROM pg_constraint
+        WHERE conname = 'reviews_repo_pr_reviewer_state_submitted_at_key'
+    ) THEN
+        ALTER TABLE raw.reviews
+            ADD CONSTRAINT reviews_repo_pr_reviewer_state_submitted_at_key
+            UNIQUE (repo, pr_number, reviewer_login, state, submitted_at);
+    END IF;
+END
+\$\$;
+
 CREATE TABLE IF NOT EXISTS raw.issues (
     id                  SERIAL PRIMARY KEY,
     issue_number        INTEGER NOT NULL,
@@ -84,7 +105,6 @@ CREATE TABLE IF NOT EXISTS raw.issues (
     UNIQUE(issue_number, repo)
 );
 
--- Pipeline run log
 CREATE TABLE IF NOT EXISTS raw.pipeline_runs (
     id                  SERIAL PRIMARY KEY,
     run_at              TIMESTAMPTZ DEFAULT NOW(),
@@ -96,3 +116,4 @@ CREATE TABLE IF NOT EXISTS raw.pipeline_runs (
     issues_loaded       INTEGER DEFAULT 0,
     error_message       TEXT
 );
+EOSQL

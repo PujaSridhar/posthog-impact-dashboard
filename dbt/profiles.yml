@@ -4,10 +4,10 @@ github_impact:
     dev:
       type: postgres
       host: postgres
-      user: warehouse
-      password: warehouse
+      user: "{{ env_var('WAREHOUSE_DB_USER', 'warehouse') }}"
+      password: "{{ env_var('WAREHOUSE_DB_PASSWORD', 'warehouse') }}"
       port: 5432
-      dbname: github_warehouse
+      dbname: "{{ env_var('WAREHOUSE_DB_NAME', 'github_warehouse') }}"
       schema: marts
       threads: 4
       keepalives_idle: 0

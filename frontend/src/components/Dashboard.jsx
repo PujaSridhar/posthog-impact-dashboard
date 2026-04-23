@@ -7,7 +7,7 @@ import BadgeLegend from './BadgeLegend'
 import TeamInsight from './TeamInsight'
 import styles from './Dashboard.module.css'
 
-const API = 'http://localhost:8000'
+const API = import.meta.env.VITE_API_BASE_URL || ''
 const DAY_OPTIONS = [7, 15, 30, 60, 90]
 
 export default function Dashboard() {
@@ -38,10 +38,13 @@ export default function Dashboard() {
   const lastRun = pipeline?.runs?.[0]
 
   if (error) return (
-    <div className={styles.error}>
+      <div className={styles.error}>
       <div className={styles.errorIcon}>⚠</div>
       <div className={styles.errorTitle}>API Unreachable</div>
-      <div className={styles.errorSub}>Make sure Docker is running · {API}</div>
+      <div className={styles.errorSub}>
+        Make sure the API is running
+        {API ? ` · ${API}` : ''}
+      </div>
     </div>
   )
 
@@ -161,7 +164,7 @@ export default function Dashboard() {
         <footer className={styles.footer}>
           <span>PostHog/posthog</span><span>·</span>
           <span>Last {days} days</span><span>·</span>
-          <span>GitHub API → Postgres → dbt → FastAPI → React</span>
+          <span>GitHub API → Postgres → dbt → FastAPI → Redis → React</span>
           {lastRun && <><span>·</span><span>{lastRun.commits_loaded} commits · {lastRun.prs_loaded} PRs loaded</span></>}
         </footer>
       </main>

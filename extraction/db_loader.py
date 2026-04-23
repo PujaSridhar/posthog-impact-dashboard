@@ -77,17 +77,16 @@ def load_pull_requests(conn: PgConnection, prs: list[dict], repo: str) -> int:
 
 
 def load_reviews(conn: PgConnection, reviews: list[dict], repo: str) -> int:
-    """Insert reviews (append-only, no upsert — reviews don't change)."""
+    """Upsert reviews so overlapping DAG runs cannot wipe each other out."""
     if not reviews:
         return 0
-
-    # Clear existing reviews for this repo before reload to avoid duplicates
-    with conn.cursor() as cur:
-        cur.execute("DELETE FROM raw.reviews WHERE repo = %s", (repo,))
 
     sql = """
         INSERT INTO raw.reviews (pr_number, repo, reviewer_login, reviewer_type, state, submitted_at)
         VALUES (%(pr_number)s, %(repo)s, %(reviewer_login)s, %(reviewer_type)s, %(state)s, %(submitted_at)s)
+        ON CONFLICT (repo, pr_number, reviewer_login, state, submitted_at) DO UPDATE SET
+            reviewer_type = EXCLUDED.reviewer_type,
+            extracted_at = NOW()
     """
 
     rows = [{**r, "repo": repo} for r in reviews]
@@ -96,7 +95,7 @@ def load_reviews(conn: PgConnection, reviews: list[dict], repo: str) -> int:
         psycopg2.extras.execute_batch(cur, sql, rows, page_size=500)
     conn.commit()
 
-    logger.info(f"Loaded {len(rows)} reviews for {repo}")
+    logger.info(f"Upserted {len(rows)} reviews for {repo}")
     return len(rows)
 
 
