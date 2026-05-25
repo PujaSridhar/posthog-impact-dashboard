@@ -98,10 +98,70 @@ def leaderboard(
         return cached
     since = since_date(days)
     sql = """
-        SELECT * FROM marts.fct_engineer_impact
-        WHERE repo = %(repo)s
-        ORDER BY impact_score DESC
-        LIMIT %(limit)s
+        WITH commits_agg AS (
+            SELECT LOWER(author_login) AS engineer_login, author_avatar_url,
+                   COUNT(*) AS commits,
+                   COUNT(DISTINCT DATE(committed_at)) AS active_days
+            FROM raw.commits
+            WHERE repo = %(repo)s AND committed_at >= %(since)s AND author_login IS NOT NULL
+            GROUP BY LOWER(author_login), author_avatar_url
+        ),
+        prs_agg AS (
+            SELECT LOWER(author_login) AS engineer_login,
+                   COUNT(*) AS prs_merged,
+                   AVG(COALESCE(review_comments,0)+COALESCE(comments,0)) AS avg_discussion_per_pr,
+                   ARRAY_AGG(title ORDER BY merged_at DESC) FILTER (WHERE title IS NOT NULL) AS recent_pr_titles
+            FROM raw.pull_requests
+            WHERE repo = %(repo)s AND merged_at >= %(since)s AND author_login IS NOT NULL
+            GROUP BY LOWER(author_login)
+        ),
+        reviews_agg AS (
+            SELECT LOWER(reviewer_login) AS engineer_login,
+                   COUNT(*) AS reviews,
+                   SUM(CASE WHEN state='APPROVED' THEN 1 ELSE 0 END) AS approvals,
+                   SUM(CASE WHEN state='CHANGES_REQUESTED' THEN 1 ELSE 0 END) AS changes_requested
+            FROM raw.reviews
+            WHERE repo = %(repo)s AND submitted_at >= %(since)s AND reviewer_login IS NOT NULL
+            GROUP BY LOWER(reviewer_login)
+        ),
+        issues_agg AS (
+            SELECT LOWER(closed_by_login) AS engineer_login, COUNT(*) AS issues_closed
+            FROM raw.issues
+            WHERE repo = %(repo)s AND closed_at >= %(since)s AND closed_by_login IS NOT NULL
+            GROUP BY LOWER(closed_by_login)
+        ),
+        combined AS (
+            SELECT
+                COALESCE(c.engineer_login, p.engineer_login, r.engineer_login, i.engineer_login) AS engineer_login,
+                COALESCE(c.author_avatar_url, '') AS avatar_url,
+                COALESCE(c.commits, 0) AS commits,
+                COALESCE(c.active_days, 0) AS active_days,
+                COALESCE(p.prs_merged, 0) AS prs_merged,
+                COALESCE(p.avg_discussion_per_pr, 0) AS avg_discussion_per_pr,
+                COALESCE(p.recent_pr_titles, ARRAY[]::TEXT[]) AS recent_pr_titles,
+                COALESCE(r.reviews, 0) AS reviews,
+                COALESCE(r.approvals, 0) AS approvals,
+                COALESCE(r.changes_requested, 0) AS changes_requested,
+                COALESCE(i.issues_closed, 0) AS issues_closed
+            FROM commits_agg c
+            FULL OUTER JOIN prs_agg     p ON c.engineer_login = p.engineer_login
+            FULL OUTER JOIN reviews_agg r ON COALESCE(c.engineer_login,p.engineer_login) = r.engineer_login
+            FULL OUTER JOIN issues_agg  i ON COALESCE(c.engineer_login,p.engineer_login,r.engineer_login) = i.engineer_login
+        ),
+        scored AS (
+            SELECT *,
+                (prs_merged*8 + changes_requested*4 + reviews*3 + issues_closed*2 + commits + approvals)::FLOAT AS impact_score,
+                prs_merged*8 AS score_from_prs,
+                changes_requested*4 AS score_from_catching_issues,
+                reviews*3 AS score_from_reviews,
+                issues_closed*2 AS score_from_issues,
+                commits AS score_from_commits,
+                approvals AS score_from_approvals,
+                RANK() OVER (ORDER BY (prs_merged*8+changes_requested*4+reviews*3+issues_closed*2+commits+approvals) DESC) AS impact_rank
+            FROM combined
+            WHERE commits + prs_merged + reviews > 0
+        )
+        SELECT * FROM scored ORDER BY impact_rank LIMIT %(limit)s
     """
     try:
         conn = get_conn()
@@ -139,7 +199,7 @@ def engineer_trends(
     try:
         conn = get_conn()
         with conn.cursor() as cur:
-            cur.execute(sql, {"repo": repo, "login": engineer_login.lower(), "since": since})
+            cur.execute(sql, {"repo": repo, "login": engineer_login.lower()})
             rows = cur.fetchall()
         conn.close()
         if not rows:
@@ -167,9 +227,12 @@ def team_summary(
         return cached
     since = since_date(days)
     sql = """
-        SELECT total_engineers, total_commits, total_prs_merged, total_reviews, total_issues_closed
-        FROM marts.fct_team_summary
-        WHERE repo = %(repo)s AND days = %(days)s
+        SELECT
+            (SELECT COUNT(DISTINCT LOWER(author_login)) FROM raw.commits WHERE repo=%(repo)s AND committed_at>=%(since)s AND author_login IS NOT NULL) AS total_engineers,
+            (SELECT COUNT(*) FROM raw.commits WHERE repo=%(repo)s AND committed_at>=%(since)s) AS total_commits,
+            (SELECT COUNT(*) FROM raw.pull_requests WHERE repo=%(repo)s AND merged_at>=%(since)s) AS total_prs_merged,
+            (SELECT COUNT(*) FROM raw.reviews WHERE repo=%(repo)s AND submitted_at>=%(since)s) AS total_reviews,
+            (SELECT COUNT(*) FROM raw.issues WHERE repo=%(repo)s AND closed_at>=%(since)s) AS total_issues_closed
     """
     try:
         conn = get_conn()
