@@ -8,6 +8,6 @@ github_impact:
       password: "{{ env_var('WAREHOUSE_DB_PASSWORD', 'warehouse') }}"
       port: 5432
       dbname: "{{ env_var('WAREHOUSE_DB_NAME', 'github_warehouse') }}"
-      schema: marts
+      schema: public
       threads: 4
       keepalives_idle: 0

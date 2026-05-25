@@ -127,7 +127,7 @@ services:
     environment:
       <<: *airflow-common-env
     command: >
-      bash -c "pip install apache-airflow==2.8.1 && airflow db init && airflow db upgrade && airflow users create --username ${AIRFLOW_ADMIN_USERNAME:-admin} --firstname Admin --lastname User --role Admin --email ${AIRFLOW_ADMIN_EMAIL:-admin@example.com} --password ${AIRFLOW_ADMIN_PASSWORD:-admin}"
+      bash -c "airflow db init && airflow db upgrade && airflow users create --username ${AIRFLOW_ADMIN_USERNAME:-admin} --firstname Admin --lastname User --role Admin --email ${AIRFLOW_ADMIN_EMAIL:-admin@example.com} --password ${AIRFLOW_ADMIN_PASSWORD:-admin}"
 
   # ── FastAPI ────────────────────────────────────────────────────────────────
   api:

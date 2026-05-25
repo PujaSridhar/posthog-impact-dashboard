@@ -189,7 +189,7 @@ Full docs at `http://localhost:8000/docs` (Swagger UI).
 │   ├── main.py                     # FastAPI app
 │   ├── Dockerfile
 │   └── requirements.txt
-├── init-warehouse.sql              # DB + schema initialisation
+├── init-warehouse.sh               # DB + schema initialisation
 ├── docker-compose.yml
 └── .env.example
 ```
