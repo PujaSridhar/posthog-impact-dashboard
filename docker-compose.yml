@@ -12,10 +12,11 @@ x-airflow-common: &airflow-common
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
+    _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-dbt-postgres==1.7.0}
     # GitHub token for API access
     GITHUB_TOKEN: ${GITHUB_TOKEN:-}
     # Postgres connection for our data warehouse
-    WAREHOUSE_CONN: postgresql://${WAREHOUSE_DB_USER:-warehouse}:${WAREHOUSE_DB_PASSWORD:-warehouse}@postgres/${WAREHOUSE_DB_NAME:-github_warehouse}
+    WAREHOUSE_CONN: ${WAREHOUSE_CONN:-postgresql://warehouse:warehouse@postgres/github_warehouse}
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - ./airflow/logs:/opt/airflow/logs
@@ -137,7 +138,8 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: postgresql://${WAREHOUSE_DB_USER:-warehouse}:${WAREHOUSE_DB_PASSWORD:-warehouse}@postgres/${WAREHOUSE_DB_NAME:-github_warehouse}
+      DATABASE_URL: ${DATABASE_URL:-postgresql://warehouse:warehouse@postgres/github_warehouse}
+      WAREHOUSE_CONN: ${WAREHOUSE_CONN:-postgresql://warehouse:warehouse@postgres/github_warehouse}
     depends_on:
       postgres:
         condition: service_healthy

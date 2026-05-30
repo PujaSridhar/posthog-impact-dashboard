@@ -94,8 +94,12 @@ docker compose exec airflow-scheduler airflow dags trigger github_engineering_im
 ### Running dbt manually
 
 ```bash
-docker compose exec airflow-scheduler bash -c "cd /opt/airflow/dbt && dbt run --profiles-dir /opt/airflow/dbt"
+docker compose exec airflow-scheduler bash -c "cd /opt/airflow/dbt && python run_dbt.py"
 ```
+
+The DAG uses the same dbt wrapper. It parses `WAREHOUSE_CONN` or
+`DATABASE_URL` into dbt connection settings, so local Postgres and Neon-style
+URLs work through the same command.
 
 ## Serverless Deployment
 
@@ -109,9 +113,14 @@ This repo is configured for a serverless deployment on Vercel:
 
 ```bash
 DATABASE_URL=postgresql://USER:PASSWORD@HOST:5432/DB_NAME
+WAREHOUSE_CONN=postgresql://USER:PASSWORD@HOST:5432/DB_NAME?sslmode=require
 REDIS_URL=redis://default:PASSWORD@HOST:6379
 CACHE_TTL_SECONDS=300
 ```
+
+For Neon, include `sslmode=require` in both database URLs. Airflow uses
+`WAREHOUSE_CONN` for extraction and dbt, while the API uses `DATABASE_URL`
+and falls back to `WAREHOUSE_CONN` when `DATABASE_URL` is not set.
 
 ### Deploy flow
 
