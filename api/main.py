@@ -21,7 +21,11 @@ app = FastAPI(title="GitHub Engineering Impact API", version="2.0.0")
 
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["GET"], allow_headers=["*"])
 
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://warehouse:warehouse@postgres/github_warehouse")
+DATABASE_URL = (
+    os.getenv("DATABASE_URL")
+    or os.getenv("WAREHOUSE_CONN")
+    or "postgresql://warehouse:warehouse@postgres/github_warehouse"
+)
 VALID_DAYS = {7, 15, 30, 60, 90}
 CACHE_TTL_SECONDS = int(os.getenv("CACHE_TTL_SECONDS", os.getenv("CACHE_TTL", "300")))
 REDIS_URL = os.getenv("REDIS_URL")

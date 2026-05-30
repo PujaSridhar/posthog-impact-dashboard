@@ -19,6 +19,108 @@ def get_connection(database_url: str) -> PgConnection:
     return psycopg2.connect(database_url)
 
 
+def ensure_warehouse_schema(conn: PgConnection) -> None:
+    """Create raw warehouse objects in the currently connected database."""
+    statements = [
+        "CREATE SCHEMA IF NOT EXISTS raw",
+        "CREATE SCHEMA IF NOT EXISTS staging",
+        "CREATE SCHEMA IF NOT EXISTS marts",
+        """
+        CREATE TABLE IF NOT EXISTS raw.commits (
+            id                  SERIAL PRIMARY KEY,
+            sha                 VARCHAR(40) UNIQUE NOT NULL,
+            author_login        VARCHAR(255),
+            author_avatar_url   TEXT,
+            author_type         VARCHAR(50),
+            message             TEXT,
+            committed_at        TIMESTAMPTZ,
+            repo                VARCHAR(255) NOT NULL,
+            extracted_at        TIMESTAMPTZ DEFAULT NOW()
+        )
+        """,
+        """
+        CREATE TABLE IF NOT EXISTS raw.pull_requests (
+            id                  SERIAL PRIMARY KEY,
+            pr_number           INTEGER NOT NULL,
+            repo                VARCHAR(255) NOT NULL,
+            title               TEXT,
+            author_login        VARCHAR(255),
+            author_avatar_url   TEXT,
+            author_type         VARCHAR(50),
+            state               VARCHAR(50),
+            merged_at           TIMESTAMPTZ,
+            created_at          TIMESTAMPTZ,
+            closed_at           TIMESTAMPTZ,
+            review_comments     INTEGER DEFAULT 0,
+            comments            INTEGER DEFAULT 0,
+            extracted_at        TIMESTAMPTZ DEFAULT NOW(),
+            UNIQUE(pr_number, repo)
+        )
+        """,
+        """
+        CREATE TABLE IF NOT EXISTS raw.reviews (
+            id                  SERIAL PRIMARY KEY,
+            pr_number           INTEGER NOT NULL,
+            repo                VARCHAR(255) NOT NULL,
+            reviewer_login      VARCHAR(255) NOT NULL,
+            reviewer_type       VARCHAR(50),
+            state               VARCHAR(50) NOT NULL,
+            submitted_at        TIMESTAMPTZ NOT NULL,
+            extracted_at        TIMESTAMPTZ DEFAULT NOW()
+        )
+        """,
+        """
+        CREATE TABLE IF NOT EXISTS raw.issues (
+            id                  SERIAL PRIMARY KEY,
+            issue_number        INTEGER NOT NULL,
+            repo                VARCHAR(255) NOT NULL,
+            title               TEXT,
+            state               VARCHAR(50),
+            closed_by_login     VARCHAR(255),
+            closed_by_type      VARCHAR(50),
+            created_at          TIMESTAMPTZ,
+            closed_at           TIMESTAMPTZ,
+            updated_at          TIMESTAMPTZ,
+            extracted_at        TIMESTAMPTZ DEFAULT NOW(),
+            UNIQUE(issue_number, repo)
+        )
+        """,
+        """
+        CREATE TABLE IF NOT EXISTS raw.pipeline_runs (
+            id                  SERIAL PRIMARY KEY,
+            run_at              TIMESTAMPTZ DEFAULT NOW(),
+            repo                VARCHAR(255),
+            status              VARCHAR(50),
+            commits_loaded      INTEGER DEFAULT 0,
+            prs_loaded          INTEGER DEFAULT 0,
+            reviews_loaded      INTEGER DEFAULT 0,
+            issues_loaded       INTEGER DEFAULT 0,
+            error_message       TEXT
+        )
+        """,
+        """
+        DO $$
+        BEGIN
+            IF NOT EXISTS (
+                SELECT 1
+                FROM pg_constraint
+                WHERE conname = 'reviews_repo_pr_reviewer_state_submitted_at_key'
+            ) THEN
+                ALTER TABLE raw.reviews
+                    ADD CONSTRAINT reviews_repo_pr_reviewer_state_submitted_at_key
+                    UNIQUE (repo, pr_number, reviewer_login, state, submitted_at);
+            END IF;
+        END
+        $$
+        """,
+    ]
+
+    with conn.cursor() as cur:
+        for statement in statements:
+            cur.execute(statement)
+    conn.commit()
+
+
 def load_commits(conn: PgConnection, commits: list[dict], repo: str) -> int:
     """Upsert commits into raw.commits. Returns count inserted/updated."""
     if not commits:

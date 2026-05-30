@@ -3,11 +3,12 @@ github_impact:
   outputs:
     dev:
       type: postgres
-      host: postgres
-      user: "{{ env_var('WAREHOUSE_DB_USER', 'warehouse') }}"
-      password: "{{ env_var('WAREHOUSE_DB_PASSWORD', 'warehouse') }}"
-      port: 5432
-      dbname: "{{ env_var('WAREHOUSE_DB_NAME', 'github_warehouse') }}"
-      schema: public
+      host: "{{ env_var('DBT_WAREHOUSE_HOST', 'postgres') }}"
+      user: "{{ env_var('DBT_WAREHOUSE_USER', env_var('WAREHOUSE_DB_USER', 'warehouse')) }}"
+      password: "{{ env_var('DBT_WAREHOUSE_PASSWORD', env_var('WAREHOUSE_DB_PASSWORD', 'warehouse')) }}"
+      port: "{{ env_var('DBT_WAREHOUSE_PORT', '5432') | int }}"
+      dbname: "{{ env_var('DBT_WAREHOUSE_DBNAME', env_var('WAREHOUSE_DB_NAME', 'github_warehouse')) }}"
+      schema: "{{ env_var('DBT_WAREHOUSE_SCHEMA', 'public') }}"
       threads: 4
       keepalives_idle: 0
+      sslmode: "{{ env_var('DBT_WAREHOUSE_SSLMODE', 'prefer') }}"

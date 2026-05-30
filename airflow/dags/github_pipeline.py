@@ -40,6 +40,14 @@ def _since_iso() -> str:
 
 # ── Task functions ────────────────────────────────────────────────────────────
 
+def init_warehouse():
+    from db_loader import ensure_warehouse_schema, get_connection
+
+    conn = get_connection(WAREHOUSE_URL)
+    ensure_warehouse_schema(conn)
+    conn.close()
+
+
 def extract_commits(**context):
     from github_client import GitHubClient
     from db_loader import get_connection, load_commits
@@ -115,7 +123,7 @@ def extract_issues(**context):
 
 
 def log_run(**context):
-    from db_loader import get_connection, log_pipeline_run
+    from db_loader import ensure_warehouse_schema, get_connection, log_pipeline_run
 
     ti = context["ti"]
     dag_run = context["dag_run"]
@@ -149,6 +157,7 @@ def log_run(**context):
         error = f"Unsuccessful tasks: {details}"
 
     conn = get_connection(WAREHOUSE_URL)
+    ensure_warehouse_schema(conn)
     log_pipeline_run(conn, REPO, status, counts, error=error)
     conn.close()
 
@@ -166,6 +175,11 @@ with DAG(
     catchup=False,
     tags=["github", "engineering-metrics"],
 ) as dag:
+
+    t_init = PythonOperator(
+        task_id="init_warehouse",
+        python_callable=init_warehouse,
+    )
 
     t_commits = PythonOperator(
         task_id="extract_commits",
@@ -190,7 +204,7 @@ with DAG(
     # Run dbt transformations after all raw data is loaded
     t_dbt = BashOperator(
         task_id="run_dbt_transformations",
-        bash_command="cd /opt/airflow/dbt && /home/airflow/.local/bin/dbt run --profiles-dir /opt/airflow/dbt",
+        bash_command="cd /opt/airflow/dbt && python run_dbt.py",
     )
 
     t_log = PythonOperator(
@@ -200,6 +214,7 @@ with DAG(
     )
 
     # Extraction tasks run in parallel, then dbt, then log
+    t_init >> [t_commits, t_prs, t_issues]
     [t_commits, t_prs, t_issues] >> t_dbt
     t_prs >> t_reviews >> t_dbt
     t_dbt >> t_log
